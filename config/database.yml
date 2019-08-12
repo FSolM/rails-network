@@ -23,21 +23,24 @@ default: &default
 
 development:
   <<: *default
-  database: odin-facebook_development
+  database: d389sfecb34pq5
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: odin_facebook
+  username: ichuoypkkfxvnj
 
   # The password associated with the postgres role (username).
-  password: rootroot
+  password: 3848795c1bd13c423305addb5fb86cfd32b5c489e079521ed478a5bcb2f2d150
+
+  # uri
+  uri:     postgres://ichuoypkkfxvnj:3848795c1bd13c423305addb5fb86cfd32b5c489e079521ed478a5bcb2f2d150@ec2-50-19-124-157.compute-1.amazonaws.com:5432/d389sfecb34pq5
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  host: localhost
+  host: ec2-50-19-124-157.compute-1.amazonaws.com
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
@@ -55,11 +58,12 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: odin_facebook_test
-  host: localhost
-  port: 5432
+
+  #test:
+  #  <<: *default
+  #  database: odin_facebook_test
+  #  host: localhost
+  #  port: 5432
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,8 +84,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: odin-facebook_production
-  username: odin-facebook
-  password: <%= ENV['ODIN-FACEBOOK_DATABASE_PASSWORD'] %>
+  #production:
+  #  <<: *default
+  #  database: odin-facebook_production
+  #  username: microverse-facebook
+  #  password: <%= ENV['ODIN-FACEBOOK_DATABASE_PASSWORD'] %>
