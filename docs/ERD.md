@@ -14,6 +14,7 @@ Contains:
 - password `varchar`
 - birth_day `date`
 - bio `varchar`
+- image_link `varchar`
 
 Relationships:
 - has_many `:authored_posts`, foreign_key: `:author_id`
@@ -32,7 +33,7 @@ Contains:
 - content `varchar`
 
 Relationships:
-- owned_by `:author`, foreign_key: `:author_id`
+- belongs_to `:author`, foreign_key: `:author_id`
 - has_many `:post_comments`, foreign_key: `:post_id`
 - has_many `:post_reactions`, foreign_key: `:post_id`
 
@@ -47,8 +48,8 @@ Contains:
 
 Relationships:
 
-- owned_by `:author`, foreign_key: `:author_id`
-- owned_by `:post`, foreign_key: `:post_id`
+- belongs_to `:author`, foreign_key: `:author_id`
+- belongs_to `:post`, foreign_key: `:post_id`
 
 ***
 
@@ -62,6 +63,4 @@ Contains:
 
 Relationships:
 
-- has_many `:users`
-- has_many `:users`
-
+- belongs_to `:users`
