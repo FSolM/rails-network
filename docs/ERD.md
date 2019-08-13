@@ -1,5 +1,7 @@
 # Data architecture documentation
 
+[Go back to README](../README.md)
+
 We have decided to use 5 tables: `users`, `posts`, `comments`, `reactions`, `friendships`
 
 for a more interactive look check [this link](https://dbdiagram.io/d/5d4c841aced98361d6dd7015)
