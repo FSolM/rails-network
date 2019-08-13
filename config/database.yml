@@ -59,11 +59,14 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 
-  #test:
-  #  <<: *default
-  #  database: odin_facebook_test
-  #  host: localhost
-  #  port: 5432
+test:
+  <<: *default
+  host: ec2-50-19-109-120.compute-1.amazonaws.com
+  database: den6ue1k5bd0ct
+  user: ekocsfkkqylobf
+  port: 5432
+  password: 9cf7066a95b1820f68d9e6e7051b855154cee488937e36b218b24318212524a6
+  uri: postgres://ekocsfkkqylobf:9cf7066a95b1820f68d9e6e7051b855154cee488937e36b218b24318212524a6@ec2-50-19-109-120.compute-1.amazonaws.com:5432/den6ue1k5bd0ct
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
