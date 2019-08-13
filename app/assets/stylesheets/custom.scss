@@ -1,1 +1,47 @@
 @import "tejuino.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+/* General Style */
+
+* { font-family: 'Roboto', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Sans', Arial, sans-serif }
+
+footer {
+  background-color: #272727;
+  color: #ffffff;
+}
+
+/* Sign Up Page */
+
+.container-user-new {
+  background-color: #e0e0e0;
+  text-align: center;
+  .col-md-6:nth-of-type(2) {
+    background-color: #ffffff;
+    border-radius: 2.5rem;
+    padding: 5rem 2rem;
+    h4 { margin: 2rem 0; }
+    input {
+      border-radius: 0;
+      font-size: 1.8rem;
+      margin: 0;
+      padding: 1rem 0.5rem;
+      &[type="checkbox"] { width: 5%; }
+      &[type="submit"].btn {
+        background-color: #003366;
+        border: 2px solid #0052a3;
+        color: #ffffff;
+        &:hover {
+          background-color: #0052a3;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  form .field {
+    &:nth-of-type(3) {
+      margin: 1rem 0;
+      padding-right: 6rem;
+      text-align: right;
+    }
+  }
+}
