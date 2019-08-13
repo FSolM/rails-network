@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'feed/index'
   devise_for :users, controllers: { confirmations: "user/confirmations",
                                     passwords: "user/passwords",
                                     registrations: "user/registrations",
