@@ -61,12 +61,11 @@ development:
 
 test:
   <<: *default
-  host: ec2-50-19-109-120.compute-1.amazonaws.com
-  database: den6ue1k5bd0ct
-  user: ekocsfkkqylobf
+  host: localhost
+  database: odin_fb_test
+  user: odin_fb
   port: 5432
-  password: 9cf7066a95b1820f68d9e6e7051b855154cee488937e36b218b24318212524a6
-  uri: postgres://ekocsfkkqylobf:9cf7066a95b1820f68d9e6e7051b855154cee488937e36b218b24318212524a6@ec2-50-19-109-120.compute-1.amazonaws.com:5432/den6ue1k5bd0ct
+  password: admin
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
