@@ -10,9 +10,10 @@ footer {
   color: #ffffff;
 }
 
-/* Sign Up Page */
+/* Sign Up/Sign In Page */
 
-.container.container-user-new {
+.container.container-registration-new,
+.container.container-session-new {
   background-color: #e0e0e0;
   padding: 3rem 2rem 5rem 2rem;
   text-align: center;
@@ -47,7 +48,7 @@ footer {
     }
   }
   form {
-    .field:nth-of-type(3) {
+    .field.checkbox {
       margin: 1rem 0;
       padding-right: 6rem;
       text-align: right;
