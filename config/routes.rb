@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       root 'user/sessions#new', as: :unauthenticated_root
     end
   end
+
+  get "/feed", to: "feed#index"
 end
