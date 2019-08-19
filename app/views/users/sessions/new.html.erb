@@ -1,6 +1,8 @@
 <div class="container container-session-new">
   <div class="row">
-    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <%= render "layouts/recent_posts" %>
+    </div>
     <div class="col-md-6">
       <h4>Log In to Start Publishing your Posts!</h4>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -19,7 +21,7 @@
         <div class="actions">
           <%= f.submit "Log in", class: "btn" %>
         </div>
-        <%= render "users/shared/links" %>
+        <!-- <%= render "users/shared/links" %>  --->
       <% end %>
     </div>
   </div>
