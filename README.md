@@ -2,7 +2,7 @@
 
 This project is the final project of the Main Ruby on Rails curriculum at [Microverse](https://www.microverse.org/)
 
-For more info about the ERD check the ERD.md file on the docs folder
+More info about the ERD [here](./docs/ERD.md)
 
 #### [Assignment link](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)  
 
