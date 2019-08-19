@@ -7,6 +7,8 @@ Rails.application.routes.draw do
                                     omniauth_callbacks: "user/omniauth_callbacks",
                                   }
 
+  resources :posts, only: [:new, :create, :destroy]
+
   devise_scope :user do
     authenticated :user do
       root 'feed#index', as: :authenticated_root
