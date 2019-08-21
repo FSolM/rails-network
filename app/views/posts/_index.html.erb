@@ -1,12 +1,12 @@
 <% if @recent_posts.empty? %>
-  <h3>Wow, such empty, go ahead and post something! </h3>
+  <h3>Nothing to see here</h3>
 <% else %>
     <% @recent_posts.each do |post| %>
       <div class="post">
         <div class="post-container">
           <div class="user-info">
             <div class="user-img-mock"></div>
-            <%= link_to "#{post.author.name}"  %>
+            <%= link_to "#{post.author.name}" , user_path(post.author)  %>
             <% if post.author == current_user %>
               <ul class="post-modif">
                 <li><%= link_to "edit", edit_post_path(post) %></li>

@@ -3,7 +3,7 @@
     <div class="img-mock"></div>
     <h3><%= @user.name %></h3>
     <div class="bio-container">
-      <% if @user.bio.nil? || @user.bio.empty? %>
+      <% if @user == current_user && (@user.bio.nil? || @user.bio.empty?) %>
         <h5>You don't have a bio, go ahead and add one <%= link_to "here" %><h4>
       <% else %>
         <h4><%= @user.bio %></h4>
@@ -15,13 +15,13 @@
   <div class="user-friends">
     <h4>Friends:</h4>
     <% if @user_friends.empty? %>
-      <h4>Wow, such empty, add some friendly peple</h4>
+      <h4>Nothing to see here</h4>
     <% else %>
       <div class="friend-container">
         <% @user_friends.each do |friend| %>
           <div class="friend">
             <div class="mock-img"></div>
-            <%= link_to "#{friend.name}" %>
+            <%= link_to "#{friend.name}", user_path(friend) %>
           </div>
         <% end %>
       </div>
