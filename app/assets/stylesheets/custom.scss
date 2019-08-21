@@ -118,6 +118,17 @@ footer {
   }
 }
 
+/* Footer */
+
+.footer {
+  display: flex;
+  z-index: 3000;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 10vh;
+  padding: 0;
+}
 /* Feed style */
 
 .container.container-feed {
@@ -125,14 +136,24 @@ footer {
   padding: 0;
   width: 100%;
   max-width: none;
+  height: 93vh;
   .row {
     padding: 0;
-    .post {
-      margin-top: 1rem;
-      border-bottom: 1px solid rgb(180,180,180);
-      .post-content{
-        h5 {
-          color: rgb(40,40,40);
+    margin-bottom: 2rem;
+    .feed-user-cont {
+      margin-top: -63px;          /* -nav */
+      height: 100vh;
+    }
+    .feed-posts-cont {
+      max-height: 90vh;
+      overflow: scroll;
+      .post {
+        margin-top: 1rem;
+        border-bottom: 1px solid rgb(180,180,180);
+        .post-content{
+          h5 {
+            color: rgb(40,40,40);
+          }
         }
       }
       .post-modif {
@@ -159,7 +180,6 @@ footer {
 .user-container {
   top: 0;
   position: sticky;
-  margin-top: -64px;          /* -nav */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

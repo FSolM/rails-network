@@ -445,7 +445,7 @@ nav ul li:nth-last-child(1)::after {
 /* Footer */
 footer {
   display: block;
-  padding: 5rem 0;
+  padding: 3rem 0;
   text-align: center;
 }
 
