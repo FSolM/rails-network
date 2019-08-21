@@ -4,14 +4,16 @@
       <%= render "layouts/user_sidebar" %>
     </div>
     <div class="col-md-8 feed-posts-cont">
-      <%= form_for(@post, as: :patch, url: post_path) do |f| %>
-        <div class="field">
-          <%= f.text_field :content, class: "new-post-field"%>
-        </div>
-        <div class="actions">
-          <%= f.submit "Post", class: "btn new-post-submit" %>
-        </div>
-      <% end %>
+      <div class="edit-post">
+        <%= form_for(@post, as: :patch, url: post_path) do |f| %>
+          <div class="field">
+            <%= f.text_field :content, class: "edit-post-field"%>
+          </div>
+          <div class="actions">
+            <%= f.submit "Edit post", class: "btn edit-post-submit" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
