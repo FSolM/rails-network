@@ -7,7 +7,7 @@ Rails.application.routes.draw do
                                     omniauth_callbacks: "user/omniauth_callbacks",
                                   }
 
-  resources :posts, only: [:new, :create, :destroy]
+  resources :posts, only: [:new, :create, :destroy, :edit, :update]
 
   devise_scope :user do
     authenticated :user do

@@ -9,7 +9,7 @@
             <%= link_to "#{post.author.name}"  %>
             <% if post.author == current_user %>
               <ul class="post-modif">
-                <li><%= link_to "edit" %></li>
+                <li><%= link_to "edit", edit_post_path(post) %></li>
                 <li><%= link_to "delete", post_path(post) , method: :delete, action: :destroy %></li>
               </ul>
             <% end %>
