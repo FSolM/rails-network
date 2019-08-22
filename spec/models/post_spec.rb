@@ -6,23 +6,40 @@ RSpec.describe Post, type: :model do
   end
 
   context "Unit tests" do
-    it "is valid with valid attributes" do
-      expect(@post).to be_valid
+
+    context "Creation" do
+      it "is valid with valid attributes" do
+        expect(@post).to be_valid
+      end
+
+      it "is invalid without content" do
+        post = build(:post, content: nil)
+        expect(post).to_not be_valid
+      end
+
+      it "is invalid with empty content" do
+        post = build(:post, content: '')
+        expect(post).to_not be_valid
+      end
+
+      it "is invalid without author" do
+        post = build(:post, author: nil)
+        expect(post).to_not be_valid
+      end
     end
 
-    it "is invalid without content" do
-      post = build(:post, content: nil)
-      expect(post).to_not be_valid
+    context "Updating" do
+      it "updates correctly the content of a post" do
+        @post.update(content: "This is the new content of the post")
+        expect(@post.content).to eql("This is the new content of the post")
+      end
     end
 
-    it "is invalid with empty content" do
-      post = build(:post, content: '')
-      expect(post).to_not be_valid
-    end
-
-    it "is invalid without author" do
-      post = build(:post, author: nil)
-      expect(post).to_not be_valid
+    context "Deleting" do
+      it "deletes correctly a post" do
+        post = Post.first().destroy
+        expect(Post.first).to_not eql(post)
+      end
     end
   end
 
