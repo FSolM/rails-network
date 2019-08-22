@@ -8,14 +8,18 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.authored_posts.build(post_params)
-    puts post
-    if post.save
-      flash[:notice] = "You have successfully created a new post"
+    if current_user.nil?
+      flash[:alert] = "You have to log in to post"
+      redirect_to new_user_session_path
     else
-      flash[:alert] = "There has been an error when creating your post, please try again later"
+      post = current_user.authored_posts.build(post_params)
+      if post.save
+        flash[:notice] = "You have successfully created a new post"
+      else
+        flash[:alert] = "There has been an error when creating your post, please try again later"
+      end
+      redirect_to feed_path
     end
-    redirect_to feed_path
   end
 
   def destroy
@@ -24,12 +28,13 @@ class PostsController < ApplicationController
       if post.delete
         flash[:notice] = "Post deleted successfully"
       else
-        flash[:warning] = "There has been an error deleting your post, please try again later"
+        flash[:alert] = "There has been an error deleting your post, please try again later"
       end
+      redirect_to feed_path
     else
-      flash[:warning] = "The post you are trying to delete doesn't belong to you"
+      flash[:alert] = "Please log in before trying delete a post"
+      redirect_to new_user_session_path
     end
-    redirect_to feed_path
   end
 
   def edit
@@ -44,12 +49,13 @@ class PostsController < ApplicationController
       if post.update(patch_params)
         flash[:notice] = "Post edited successfully"
       else
-        flash[:warning] = "There has been an error editing your post, please try again later"
+        flash[:alert] = "There has been an error editing your post, please try again later"
       end
+      redirect_to feed_path
     else
-      flash[:warning] = "The post you are trying to edit doesn't belong to you"
+      flash[:alert] = "Please log in before trying to edit a post"
+      redirect_to new_user_session_path
     end
-    redirect_to feed_path
   end
 
   private

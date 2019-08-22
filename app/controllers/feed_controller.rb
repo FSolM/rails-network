@@ -5,6 +5,5 @@ class FeedController < ApplicationController
     @user_friends = User.last(4)
     @recent_posts = Post.order(created_at: :desc)
     @new_post = Post.new()
-    puts current_user.name
   end
 end
