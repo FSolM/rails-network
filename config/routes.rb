@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :destroy, :edit, :update]
 
   devise_scope :user do
+    get '/users', to: 'devise/registrations#new'
     authenticated :user do
       root 'feed#index', as: :authenticated_root
     end
