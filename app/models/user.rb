@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
+  validates :name, presence: true
+  validates :email, presence: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i,}
+  
+
   # Releationships with Post model
   has_many :authored_posts, foreign_key: :author_id, class_name: :Post, dependent: :destroy
 end
