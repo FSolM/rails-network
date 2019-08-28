@@ -1,31 +1,28 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :search_post, only: %i[destroy update edit]
+
+  def search_post
+    @post = Post.find(params[:id])
+  end
+
   def new
-    if signed_in?
-      @post = Post.new
-    else
-      redirect_to new_user_session_path
-    end
+    @post = Post.new
   end
 
   def create
-    if current_user.nil?
-      flash[:alert] = "You have to log in to post"
-      redirect_to new_user_session_path
+    post = current_user.authored_posts.build(post_params)
+    if post.save
+      flash[:notice] = "You have successfully created a new post"
     else
-      post = current_user.authored_posts.build(post_params)
-      if post.save
-        flash[:notice] = "You have successfully created a new post"
-      else
-        flash[:alert] = "There has been an error when creating your post, please try again later"
-      end
-      redirect_to feed_path
+      flash[:alert] = "There has been an error when creating your post, please try again later"
     end
+    redirect_to feed_path
   end
 
   def destroy
-    post = Post.find(params[:id])
-    if post.author == current_user
-      if post.delete
+    if @post.author == current_user
+      if @post.destroy
         flash[:notice] = "Post deleted successfully"
       else
         flash[:alert] = "There has been an error deleting your post, please try again later"
@@ -38,15 +35,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @user = current_user
     @user_friends = User.last(4)
-    @post = Post.find(params[:id])
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.author == current_user
-      if post.update(patch_params)
+    if @post.author == current_user
+      if @post.update(patch_params)
         flash[:notice] = "Post edited successfully"
       else
         flash[:alert] = "There has been an error editing your post, please try again later"
