@@ -81,12 +81,13 @@ footer {
 /* Recent posts */
 
 .post {
+  align-items: center;
   h4 {
     font-size: 2.5rem;
     margin: 2rem 0;
     padding: 0 1rem;
   }
-  .post-container {
+  .container-post {
     display: flex;
     flex-direction: row;
     padding: 0 0.5rem;
@@ -173,6 +174,10 @@ footer {
     }
   }
 }
+
+.container.container-post-feed { padding: 0; }
+
+.container-feed-alert { padding: 4rem; }
 
 .post {
   border-bottom: 1px solid $light-grey;
@@ -283,6 +288,7 @@ footer {
   padding-bottom:  1rem;
   position: sticky;
   top: 0;
+  z-index: 2;
   .new-post-field {
     border: none;
     padding: 2rem;
