@@ -174,12 +174,6 @@ footer {
   }
 }
 
-.new-post {
-  background: #ffffff;
-  position: sticky;
-  top: 0px;
-}
-
 .post {
   border-bottom: 1px solid $light-grey;
   margin-top: 1rem;
@@ -283,12 +277,26 @@ footer {
 
 /* New post */
 
-.new-post {
-  border-bottom: 1px solid #000000;
+.container.new-post {
+  background: #ffffff;
+  border-bottom: 1px solid $light-grey;
   padding-bottom:  1rem;
+  position: sticky;
+  top: 0;
   .new-post-field {
     border: none;
     padding: 2rem;
+  }
+  .actions input[type="submit"] {
+    background-color: $dark-blue;
+    border-radius: 2rem;
+    font-size: 2rem;
+    margin: 0.5rem 0 1rem 2rem;
+    padding: 0.5rem 1rem;
+    &:hover {
+      background-color: $medium-blue;
+      cursor: pointer;
+    }
   }
   .new-post-submit {
     background-color: $medium-blue;
