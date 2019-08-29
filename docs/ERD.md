@@ -20,6 +20,7 @@ Contains:
 
 Relationships:
 - has_many `:authored_posts`, foreign_key: `:author_id`
+
 - has_many `:authored_comments`, foreign_key: `:author_id`
 - has_many `:friendships`, foreign_key: `:user_1`
 - has_many `:friendships`, foreign_key: `:user_2`
@@ -57,7 +58,7 @@ Relationships:
 
 ## Frienships
 
-Contains:
+Contains:You have implemented the models, but have not implemented the controllers
 - id  `int`,`pk`
 - accepted `boolean`
 - user_1 `int`

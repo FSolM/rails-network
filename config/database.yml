@@ -59,11 +59,13 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 
-  #test:
-  #  <<: *default
-  #  database: odin_facebook_test
-  #  host: localhost
-  #  port: 5432
+test:
+  <<: *default
+  host: localhost
+  database: odin_fb_test
+  user: odin_fb
+  port: 5432
+  password: admin
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
