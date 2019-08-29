@@ -9,5 +9,5 @@ class Post < ApplicationRecord
   belongs_to :author, foreign_key: :author_id, class_name: :User
 
   # Relationship with Comment model
-  has_many :comments, foreign_key: :id, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
