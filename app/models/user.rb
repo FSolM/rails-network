@@ -10,4 +10,7 @@ class User < ApplicationRecord
 
   # Releationships with Post model
   has_many :authored_posts, foreign_key: :author_id, class_name: :Post, dependent: :destroy
+
+  # Relationships with Comment model
+  has_many :authored_comments, foreign_key: :author_id, class_name: :Comment, dependent: :destroy
 end
