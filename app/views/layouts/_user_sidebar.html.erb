@@ -1,30 +1,39 @@
-<div class="user-container">
-  <div class="user-info">
-    <div class="img-mock"></div>
-    <h3><%= current_user.name %></h3>
-    <div class="bio-container">
-      <% if current_user == current_user && (current_user.bio.nil? || current_user.bio.empty?) %>
-        <h5>You don't have a bio, go ahead and add one <%= link_to "here" %><h4>
+<div class="container container-user">
+  <div class="row user-info">
+    <div class="col-12">
+      <div class="img-mock"></div>
+    </div>
+    <div class="col-12">
+      <h2><%= current_user.name %></h2>
+    </div>
+    <div class="container container-bio">
+      <% if current_user.bio.nil? || current_user.bio.empty? %>
+        <h4>You don't have a bio :[<br>Go ahead and add one <%= link_to "here" %></h4>
       <% else %>
         <h4><%= current_user.bio %></h4>
       <% end %>
     </div>
-    <h5>Birth day: <%= current_user.birth_day %></h5>
-    <hr>
+    <div class="col-12">
+      <h5><%= current_user.birth_day || "Alright, keep your secrets :]" %></h5>
+    </div>
   </div>
-  <div class="user-friends">
-    <h4>Friends:</h4>
-    <% if @user_friends.empty? %>
-      <h4>Nothing to see here</h4>
-    <% else %>
-      <div class="friend-container">
-        <% @user_friends.each do |friend| %>
-          <div class="friend">
-            <div class="mock-img"></div>
-            <%= link_to "#{friend.name}", user_path(friend) %>
-          </div>
-        <% end %>
+  <div class="row user-friends">
+    <div class="container">
+      <div class="col-12">
+        <h3>Friends:</h3>
       </div>
-    <% end %>
+      <% if @user_friends.empty? %>
+        <div class="col-12">We're all lonely on the inside :]</div>
+      <% else %>
+        <div class="container-friend">
+          <% @user_friends.each do |friend| %>
+            <div class="col-6">
+              <div class="mock-img"></div>
+              <%= link_to "#{friend.name}", user_path(friend) %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
