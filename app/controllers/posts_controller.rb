@@ -20,6 +20,10 @@ class PostsController < ApplicationController
     redirect_to feed_path
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def destroy
     if @post.author == current_user
       if @post.destroy
