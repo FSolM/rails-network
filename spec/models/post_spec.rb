@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before(:all) do
+  before(:each) do
     @post = create(:post)
   end
 
@@ -43,7 +43,7 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  context "Inegration tests" do
+  context "Integration tests" do
     it "post can grab author" do
       user = create(:user, email: 'author_grabbed@example.com')
       post = create(:post, author: user)
