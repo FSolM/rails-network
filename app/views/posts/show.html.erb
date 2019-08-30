@@ -1,0 +1,24 @@
+<div class="container container-feed">
+  <div class="row">
+    <div class="col-md-4 feed-user-cont">
+      <%= render "layouts/user_sidebar" %>
+    </div>
+    <div class="col-md-8 feed-posts-cont">
+      <div class="container container-show-post">
+        <div class="col-12 post-metadata">
+          <span class="post-creator-img"></span>
+          <span class="post-creator"><%= link_to @post.author.name %></span>
+          <% if current_user == @post.author %>
+            <span class="post-control">
+              <%= link_to "edit", edit_post_path(@post) %>
+              <%= link_to "delete", post_path(@post) , method: :delete, action: :destroy %>
+            </span>
+          <% end %>
+        </div>
+        <div class="col-12 post-title"><%= @post.content %></div>
+      </div>
+      <div class="container container-comments">
+      </div>
+    </div>
+  </div>
+</div>

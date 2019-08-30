@@ -82,6 +82,7 @@ footer {
 
 .post {
   align-items: center;
+  a:hover { text-decoration: none; }
   h4 {
     font-size: 2.5rem;
     margin: 2rem 0;
@@ -318,6 +319,35 @@ footer {
 }
 
 /* New post */
+
+/* Show Post */
+
+.container.container-show-post {
+  font-size: 2rem;
+  padding: 1rem 2.5rem;
+  .post-control a {
+    color: $medium-grey;
+    margin: 0 1rem;
+  }
+  .post-creator {
+    font-size: 2.4rem;
+    font-style: italic;
+    font-weight: 800;
+    margin: 0 5rem 0 2.5rem;
+    a:hover {
+      color: $medium-blue;
+      text-decoration: none;
+    }
+  }
+  .post-metadata { margin-bottom: 4rem; }
+  .post-title {
+    font-size: 4rem;
+    font-weight: 600;
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* Show Post */
 
 /* Edit post */
 

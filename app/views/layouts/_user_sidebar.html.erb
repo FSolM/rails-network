@@ -22,7 +22,7 @@
       <div class="col-12">
         <h3>Friends:</h3>
       </div>
-      <% if @user_friends.empty? %>
+      <% unless @user_friends %>
         <div class="col-12">We're all lonely on the inside :]</div>
       <% else %>
         <div class="container-friend">

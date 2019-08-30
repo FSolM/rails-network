@@ -18,7 +18,7 @@
               <% end %>
             </div>
             <div class="post-content">
-              <h5><%= post.content %><h5>
+              <h5><%= link_to post.content, post_path(post) %><h5>
             </div>
           </div>
           <div class="post-info">
