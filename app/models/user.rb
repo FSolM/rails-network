@@ -13,4 +13,7 @@ class User < ApplicationRecord
 
   # Relationships with Comment model
   has_many :authored_comments, foreign_key: :author_id, class_name: :Comment, dependent: :destroy
+
+  # Relationships with Reaction model
+  has_many :reactions, dependent: :destroy
 end

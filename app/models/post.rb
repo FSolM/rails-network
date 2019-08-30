@@ -10,4 +10,7 @@ class Post < ApplicationRecord
 
   # Relationship with Comment model
   has_many :comments, dependent: :destroy
+
+  # Relationship with Reaction model
+  has_many :reactions, dependent: :destroy
 end
