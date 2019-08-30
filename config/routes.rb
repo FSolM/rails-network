@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :posts, only: [:new, :create, :destroy, :edit, :update]
+  resources :comments, only: [:create, :destroy, :update]
 
   devise_scope :user do
     get '/users', to: 'devise/registrations#new'

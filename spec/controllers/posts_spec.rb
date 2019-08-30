@@ -100,7 +100,7 @@ RSpec.describe PostsController, type: :controller do
       sign_in(@user)
     end
 
-    it "creates a flash when edited a post a post" do
+    it "creates a flash when edited a post" do
       get :update, params: { id: @post.id, patch: { content: 'Post edited in a lab' } }
       expect(flash[:notice]).to eql('Post edited successfully')
     end
