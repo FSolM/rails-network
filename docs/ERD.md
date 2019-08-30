@@ -20,7 +20,6 @@ Contains:
 
 Relationships:
 - has_many `:authored_posts`, foreign_key: `:author_id`
-
 - has_many `:authored_comments`, foreign_key: `:author_id`
 - has_many `:friendships`, foreign_key: `:user_1`
 - has_many `:friendships`, foreign_key: `:user_2`
@@ -37,8 +36,22 @@ Contains:
 
 Relationships:
 - belongs_to `:author`, foreign_key: `:author_id`
-- has_many `:post_comments`, foreign_key: `:post_id`
+- has_many `:comments`
 - has_many `:post_reactions`, foreign_key: `:post_id`
+
+***
+
+## Comments
+
+Contains:
+- id  `int`,`pk`
+- author_id `int`
+- post_id `int`
+- content `text`
+
+Relationships:
+- belongs_to `:author`, foreign_key: `:author_id`
+- belongs_to `:post`
 
 ***
 

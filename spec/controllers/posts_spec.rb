@@ -20,7 +20,7 @@ RSpec.describe PostsController, type: :controller do
     it "creates a flash when the user is not logged in" do
       sign_out(@user)
       get :create, params: { post: { content: "Not going to succeed" } }
-      expect(flash[:alert]).to eql("You have to log in to post")
+      expect(flash[:alert]).to eql('You need to sign in or sign up before continuing.')
     end
 
     it "redirects correctly when the user is not logged in" do
@@ -63,7 +63,7 @@ RSpec.describe PostsController, type: :controller do
     it "creates a flash when the user is not logged in" do
       sign_out(@user)
       get :destroy, params: { id: @post.id }
-      expect(flash[:alert]).to eql("Please log in before trying delete a post")
+      expect(flash[:alert]).to eql("You need to sign in or sign up before continuing.")
     end
 
     it "redirects correctly when the user is not logged in" do
@@ -78,11 +78,6 @@ RSpec.describe PostsController, type: :controller do
       @user = create(:user)
       @post = create(:post, author: @user)
       sign_in(@user)
-    end
-
-    it 'assigns correctly @user' do
-      get :edit, params: { id: @post.id }
-      expect(assigns(:user)).to eql(@user)
     end
 
     it 'assigns correctly @user_friends' do
@@ -105,7 +100,7 @@ RSpec.describe PostsController, type: :controller do
       sign_in(@user)
     end
 
-    it "creates a flash when edited a post a post" do
+    it "creates a flash when edited a post" do
       get :update, params: { id: @post.id, patch: { content: 'Post edited in a lab' } }
       expect(flash[:notice]).to eql('Post edited successfully')
     end
@@ -118,7 +113,7 @@ RSpec.describe PostsController, type: :controller do
     it "creates a flash when the user is not logged in" do
       sign_out(@user)
       get :update, params: { id: @post.id, patch: { content: 'Post edited in a lab' } }
-      expect(flash[:alert]).to eql("Please log in before trying to edit a post")
+      expect(flash[:alert]).to eql("You need to sign in or sign up before continuing.")
     end
 
     it "redirects correctly when the user is not logged in" do
