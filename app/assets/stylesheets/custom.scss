@@ -157,6 +157,22 @@ footer {
 
 /* Feed style */
 
+.btn.btn-unliked-small {
+  background-color: $light-grey;
+  border: none;
+  font-size: 1.25rem;
+  margin: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
+  &:hover { background-color: $medium-grey; }
+  a {
+    color: #ffffff;
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
 .container.container-feed {
   height: 93vh;
   margin: 0;
@@ -321,6 +337,23 @@ footer {
 /* New post */
 
 /* Show Post */
+
+.btn.btn-unliked-big {
+  background-color: $light-grey;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.75rem 2rem;
+  &:hover { background-color: $medium-grey; }
+  a {
+    color: #ffffff;
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.col-post-like { margin: 1rem 0 2rem 0; }
 
 .container.container-show-post {
   font-size: 2rem;

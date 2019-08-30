@@ -16,6 +16,14 @@
           <% end %>
         </div>
         <div class="col-12 post-title"><%= @post.content %></div>
+        <div class="col-12 col-post-like">
+          <!-- If not liked btn background grey, if liked btn background blue -->
+          <!-- Maybe add a thumbs up img in the btn or at least an up arrow -->
+          <!-- Add counter inside button -->
+         <button class="btn btn-unliked-big">
+          <%= link_to "Like" %>
+         </button>
+        </div>
       </div>
       <div class="container container-comments">
       </div>

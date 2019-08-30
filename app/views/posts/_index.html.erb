@@ -1,3 +1,4 @@
+<!-- Check this whole page, needs a little bit of code rework -->
 <div class="container container-post-feed">
   <% if @recent_posts.empty? %>
     <div class="col-12 container-feed-alert">
@@ -20,6 +21,11 @@
             <div class="post-content">
               <h5><%= link_to post.content, post_path(post) %><h5>
             </div>
+          </div>
+          <div>
+            <button class="btn btn-unliked-small">
+             <%= link_to "Like" %>
+            </button>
           </div>
           <div class="post-info">
             <% if post.created_at != post.updated_at %>
