@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:id])
-    puts current_user.authored_comments.build(post_params).post
     comment = current_user.authored_comments.build(post_params)
     if comment.save
       flash[:notice] = "You have successfully commented a post"
