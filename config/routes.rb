@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy, :update]
   resources :reactions, only: [:create, :destroy, :update]
 
+  post '/react', to: 'reactions#react'
+
   devise_scope :user do
     get '/users', to: 'devise/registrations#new'
     authenticated :user do
