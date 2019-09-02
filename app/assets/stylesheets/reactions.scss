@@ -1,3 +1,36 @@
 // Place all the styles related to the reactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$medium-blue: #0052a3;
+$pastel-blue: #90b9e2;
+$medium-grey: #616161;
+$light-grey: #aaaaaa;
+
+.like-form {
+  width: 20%;
+  .like-btn {
+    margin: 0.5rem auto;
+  }
+}
+.like-btn {
+  display: block;
+  width: auto;
+  padding: 1rem 2.5rem;
+  background-color: $light-grey;
+  &:hover {
+    background-color: $medium-grey;
+    -webkit-transition: background-color 1000ms ease;
+    -ms-transition: background-color 1000ms ease;
+    transition: background-color 1000ms ease;
+  }
+}
+.active {
+  background-color: $medium-blue;
+  &:hover {
+    background-color: $pastel-blue;
+    -webkit-transition: background-color 1000ms ease;
+    -ms-transition: background-color 1000ms ease;
+    transition: background-color 1000ms ease;
+  }
+}

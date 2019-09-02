@@ -20,9 +20,11 @@
           <!-- If not liked btn background grey, if liked btn background blue -->
           <!-- Maybe add a thumbs up img in the btn or at least an up arrow -->
           <!-- Add counter inside button -->
-         <button class="btn btn-unliked-big">
-          <%= link_to "Like" %>
-         </button>
+          <%= form_with url: react_path do |f| %>
+              <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit 'Like', class: "#{reacted?(@post) ? "like-btn active" : "like-btn"}",
+                  onclick: "$(this).toggleClass('active')" %>
+          <% end %>
         </div>
       </div>
       <div class="container container-comments">

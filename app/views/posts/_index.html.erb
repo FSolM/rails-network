@@ -23,9 +23,11 @@
             </div>
           </div>
           <div>
-            <button class="btn btn-unliked-small">
-             <%= link_to "Like" %>
-            </button>
+            <%= form_with url: react_path, class: 'like-form' do |f| %>
+                <%= f.hidden_field :post_id, value: post.id %>
+                <%= f.submit 'Like', class: "#{reacted?(post) ? "like-btn active" : "like-btn"}",
+                    onclick: "$(this).toggleClass('active')" %>
+            <% end %>
           </div>
           <div class="post-info">
             <% if post.created_at != post.updated_at %>
