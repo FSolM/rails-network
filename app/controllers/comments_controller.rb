@@ -6,6 +6,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
+  def new
+    @comment = current_user.authored_comments.build()
+  end
+
   def create
     post = Post.find(params[:id])
     comment = current_user.authored_comments.build(post_params)

@@ -7,11 +7,13 @@ $background-white: #e0e0e0;
 $dark-blue: #003366;
 $dark-wine: #490f0f;
 $light-black: #252525;
+$light-blue: #006edb;
 $light-grey: #aaaaaa;
 $medium-blue: #0052a3;
 $medium-grey: #616161;
 $pastel-blue: #90b9e2;
 $peach: #dd9797;
+$thin-grey: #ececec;
 
 /* General Style */
 
@@ -407,6 +409,43 @@ footer {
 }
 
 /* Edit post */
+
+/* Commnet Main Container */
+
+.btn.new-comment-submit {
+  background-color: $medium-blue;
+  color: #ffffff;
+  &:hover {
+    background-color: $light-blue;
+    cursor: pointer;
+  }
+}
+
+.container.container.container-comment-new {
+  border: 0.1rem solid $medium-grey;
+  border-top: none;
+  .row {
+    align-items: center;
+    justify-content: space-between;
+    input[type="text"] {
+      border-radius: 1.25rem;
+      padding: 2rem 1rem;
+    }
+  }
+}
+
+.container.container-comments {
+  padding: 0 2.5rem;
+  > * { background-color: $thin-grey; }
+  .title-comments {
+    border: 0.1rem solid $medium-grey;
+    color: $dark-blue;
+    font-size: 3.5rem;
+    padding: 1rem 2.5rem;
+  }
+}
+
+/* Commnet Main Container */
 
 /* Alerts / Flashes */
 
