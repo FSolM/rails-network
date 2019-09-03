@@ -420,7 +420,8 @@ footer {
   }
 }
 
-.container.container.container-comment-new {
+.container.container-comment-edit,
+.container.container-comment-new {
   border: 0.1rem solid $medium-grey;
   border-top: none;
   .row {
@@ -432,6 +433,8 @@ footer {
     }
   }
 }
+
+.container.container-comment-edit { border-top: 0.1rem solid $medium-grey; }
 
 .container.container-comments {
   padding: 0 2.5rem;
