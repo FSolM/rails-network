@@ -17,7 +17,7 @@
         </div>
         <div class="col-12 post-title"><%= @post.content %></div>
         <div class="col-12 col-post-like">
-          <!-- If not liked btn background grey, if liked btn background blue -->
+          <!-- Twick colour change time -->
           <!-- Maybe add a thumbs up img in the btn or at least an up arrow -->
           <!-- Add counter inside button -->
           <%= form_with url: react_path do |f| %>
@@ -33,7 +33,20 @@
         <% if @comments %>
           <% for comment in @comments %>
             <div class="container container-comment">
-              <%= comment.content %>
+              <div class="row">
+                <div class="col-3">
+                  <div class="container">
+                    <div class="col-12 comment-img"></div>
+                    <div class="col-12 comment-author"><%= comment.author.name %></div>
+                    <% if current_user == comment.author %>
+                      <div class="col-12">
+                        <%= link_to "Edit" %>  |  <%= link_to "Delete", post_comment_path(@post, comment) , method: :delete, action: :destroy %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-9 comment-content"><%= comment.content %></div>
+              </div>
             </div>
           <% end %>
         <% end %>
