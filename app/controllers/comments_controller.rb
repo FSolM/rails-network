@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = "You can't delete a comment that you don't own, please login"
     end
-    redirect_to feed_path
+    redirect_to post_path(Post.find(params[:post_id]))
   end
 
   def update
