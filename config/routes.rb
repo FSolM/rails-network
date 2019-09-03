@@ -8,8 +8,9 @@ Rails.application.routes.draw do
                                   }
 
   resources :users, only: [:show]
-  resources :posts, only: [:new, :create, :show, :destroy, :edit, :update]
-  resources :comments, only: [:create, :destroy, :update]
+  resources :posts, only: [:new, :create, :show, :destroy, :edit, :update] do
+    resources :comments, only: [:create, :destroy, :update]
+  end
   resources :reactions, only: [:create, :destroy, :update]
 
   post '/react', to: 'reactions#react'

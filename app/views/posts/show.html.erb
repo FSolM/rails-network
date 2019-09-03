@@ -30,6 +30,13 @@
       <div class="container container-comments">
         <div class="col-12 title-comments">Comments</div>
         <%= render "comments/new" if current_user %>
+        <% if @comments %>
+          <% for comment in @comments %>
+            <div class="container container-comment">
+              <%= comment.content %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

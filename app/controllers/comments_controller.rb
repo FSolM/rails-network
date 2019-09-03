@@ -7,18 +7,18 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = current_user.authored_comments.build()
+    @post = Post.find(params[:id])
+    @comment = @post.comment.build()
   end
 
   def create
-    post = Post.find(params[:id])
-    comment = current_user.authored_comments.build(post_params)
+    comment = current_user.authored_comments.build(comment_params)
     if comment.save
       flash[:notice] = "You have successfully commented a post"
     else
       flash[:alert] = "There has been an error when creating your comment, please try again later"
     end
-    redirect_to feed_path
+    redirect_to post_path(Post.find(params[:post_id]))
   end
 
   def destroy
@@ -48,10 +48,8 @@ class CommentsController < ApplicationController
   end
 
   private
-    def post_params
-      new_params = params.require(:post).permit(:content)
-      new_params[:post_id] = params[:id]
-      new_params
+    def comment_params
+      params.require(:comment).permit(:content, :post_id)
     end
 
     def patch_params
