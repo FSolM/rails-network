@@ -25,8 +25,12 @@
           <div>
             <%= form_with url: react_path, class: 'like-form' do |f| %>
                 <%= f.hidden_field :post_id, value: post.id %>
-                <%= f.submit 'Like', class: "#{reacted?(post) ? "like-btn active" : "like-btn"}",
-                    onclick: "$(this).toggleClass('active')" %>
+                <%= f.submit "#{post.reactions.count} #{post.reactions.count != 1 ? "Likes" : "Like"}",
+                    class: "#{reacted?(post) ? "like-btn active" : "like-btn"}",
+                    onclick: "$(this).toggleClass('active');
+                              text = parseInt($(this).val().split(' ')[0]);
+                              $(this).hasClass('active') ? text++ : text--;
+                              text != 1 ? $(this).val(`${text} Likes`) : $(this).val(`${text} Like`);" %>
             <% end %>
           </div>
           <div class="post-info">
