@@ -71,27 +71,27 @@ RSpec.describe CommentsController, type: :controller do
     end
 
     it "creates a flash when edited a comment" do
-      post :update, params: { patch: { content: 'Comment edited in a lab', post_id: @post.id }, 
+      post :update, params: { comment: { content: 'Comment edited in a lab', post_id: @post.id }, 
                               post_id: @post.id, id: @comment.id }
       expect(flash[:notice]).to eql('You have successfully edited a comment')
     end
     
     it "redirects correctly after removing a comment" do
-      post :update, params: { patch: { content: 'Comment edited in a lab', post_id: @post.id }, 
+      post :update, params: { comment: { content: 'Comment edited in a lab', post_id: @post.id }, 
                               post_id: @post.id, id: @comment.id }
       expect(response).to redirect_to(post_path(@post))
     end
 
     it "creates a flash when the user is not logged in" do
       sign_out(@user)
-      post :update, params: { patch: { content: 'Comment edited in a lab', post_id: @post.id }, 
+      post :update, params: { comment: { content: 'Comment edited in a lab', post_id: @post.id }, 
                               post_id: @post.id, id: @comment.id }
       expect(flash[:alert]).to eql("You need to sign in or sign up before continuing.")
     end
 
     it "redirects correctly when the user is not logged in" do
       sign_out(@user)
-      post :update, params: { patch: { content: 'Comment edited in a lab', post_id: @post.id }, 
+      post :update, params: { comment: { content: 'Comment edited in a lab', post_id: @post.id }, 
                               post_id: @post.id, id: @comment.id }
       expect(response).to redirect_to(new_user_session_path)
     end
