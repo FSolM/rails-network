@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :search_comment, only: %i[destroy update]
+  before_action :search_comment, only: %i[destroy update edit]
+  before_action :search_post, only: %i[create edit update destroy]
 
   def new
     @post = Post.find(params[:id])
@@ -11,23 +12,20 @@ class CommentsController < ApplicationController
     comment = current_user.authored_comments.build(comment_params)
     if comment.save
       flash[:notice] = "You have successfully commented a post"
-      redirect_to post_path(Post.find(params[:post_id]))
+      redirect_to post_path(@post)
     else
       flash.now[:alert] = "There has been an error when creating your comment, please try again later"
       render "new"
     end
   end
 
-  def edit
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
-  end
+  def edit; end
 
   def update
     if @comment.author == current_user
       if @comment.update(comment_params)
         flash[:notice] = "You have successfully edited a comment"
-        redirect_to post_path(Post.find(params[:post_id]))
+        redirect_to post_path(@post)
       else
         flash.now[:alert] = "There has been an error when editing your comment, please try again later"
         render "edit"
@@ -48,7 +46,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = "You can't delete a comment that you don't own, please login"
     end
-    redirect_to post_path(Post.find(params[:post_id]))
+    redirect_to post_path(@post)
   end
 
   private
@@ -58,5 +56,9 @@ class CommentsController < ApplicationController
 
   def search_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def search_post
+    @post = Post.find(params[:post_id])
   end
 end
