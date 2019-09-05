@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.author == current_user
-      if @post.update(patch_params)
+      if @post.update(post_params)
         flash[:notice] = "Post edited successfully"
         redirect_to feed_path
       else
@@ -58,10 +58,6 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:content)
-  end
-
-  def patch_params
-    params.require(:patch).permit(:content)
   end
 
   def search_post
