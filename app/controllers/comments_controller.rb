@@ -2,10 +2,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :search_comment, only: %i[destroy update]
 
-  def search_comment
-    @comment = Comment.find(params[:id])
-  end
-
   def new
     @post = Post.find(params[:id])
     @comment = @post.comment.build()
@@ -55,5 +51,9 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content, :post_id)
+  end
+
+  def search_comment
+    @comment = Comment.find(params[:id])
   end
 end

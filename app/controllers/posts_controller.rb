@@ -1,10 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :search_post, only: %i[destroy update edit]
-  
-  def search_post
-    @post = Post.find(params[:id])
-  end
 
   def new
     @post = Post.new
@@ -60,5 +56,9 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def search_post
+    @post = Post.find(params[:id])
   end
 end
