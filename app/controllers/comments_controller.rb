@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :search_comment, only: %i[destroy update]
 
   def search_comment
-    puts params
     @comment = Comment.find(params[:id])
   end
 
