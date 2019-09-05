@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.author == current_user
-      if @comment.update(patch_params)
+      if @comment.update(comment_params)
         flash[:notice] = "You have successfully edited a comment"
       else
         flash[:alert] = "There has been an error when editing your comment, please try again later"
@@ -55,9 +55,5 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content, :post_id)
-  end
-
-  def patch_params
-    params.require(:patch).permit(:content)
   end
 end
