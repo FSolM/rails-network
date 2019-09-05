@@ -13,7 +13,7 @@
       </div>
       <div class="container container-comments">
         <div class="container container-comment-edit">
-          <%= form_for(@comment, url: post_comment_path) do |f| %>
+          <%= form_for(@comment, as: :patch, url: post_comment_path) do |f| %>
             <div class="row">
               <div class="col-6">
                 <div class="field">
