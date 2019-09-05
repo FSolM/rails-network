@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_action :search_comment, only: %i[destroy update]
 
   def search_comment
-    @comment = Comment.find(params[:post_id])
+    puts params
+    @comment = Comment.find(params[:id])
   end
 
   def new
@@ -22,8 +23,8 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    @comment = Comment.find(params[:post_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
   end
 
   def update
@@ -36,7 +37,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = "You can't edit a comment that you don't own, please login"
     end
-    redirect_to post_path(Post.find(params[:id]))
+    redirect_to post_path(Post.find(params[:post_id]))
   end
 
   def destroy

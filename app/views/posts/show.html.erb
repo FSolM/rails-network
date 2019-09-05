@@ -44,7 +44,7 @@
                     <div class="col-12 comment-author"><%= comment.author.name %></div>
                     <% if current_user == comment.author %>
                       <div class="col-12">
-                        <%= link_to "edit", edit_post_comment_path(comment) %>  |  <%= link_to "delete", post_comment_path(@post, comment) , method: :delete, action: :destroy %>
+                        <%= link_to "edit", edit_post_comment_path(@post, comment) %>  |  <%= link_to "delete", post_comment_path(@post, comment) , method: :delete, action: :destroy %>
                       </div>
                     <% end %>
                   </div>
