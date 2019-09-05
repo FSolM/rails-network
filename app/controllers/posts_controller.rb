@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :search_post, only: %i[destroy update edit]
+  before_action :search_post, only: %i[destroy update edit show]
 
   def new
     @post = Post.new
@@ -18,7 +18,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @comments = @post.comments
   end
 
