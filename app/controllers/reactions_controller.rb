@@ -2,11 +2,6 @@ class ReactionsController < ApplicationController
   before_action :authenticate_user!
   before_action :search_reaction, only: %i[react]
 
-  def search_reaction
-    @post = Post.find(params[:post_id])
-    @reaction = Reaction.where(post: @post, user: current_user).first
-  end
-
   def react
     @reaction.nil? ? create : destroy
   end
@@ -30,5 +25,11 @@ class ReactionsController < ApplicationController
     else
       flash[:alert] = "You can't delete a reaction that you don't own, please login"
     end
+  end
+
+  private
+  def search_reaction
+    @post = Post.find(params[:post_id])
+    @reaction = Reaction.where(post: @post, user: current_user).first
   end
 end

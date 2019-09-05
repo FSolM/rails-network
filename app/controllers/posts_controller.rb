@@ -10,10 +10,11 @@ class PostsController < ApplicationController
     post = current_user.authored_posts.build(post_params)
     if post.save
       flash[:notice] = "You have successfully created a new post"
+      redirect_to feed_path
     else
-      flash[:alert] = "There has been an error when creating your post, please try again later"
+      flash.now[:alert] = "There has been an error when creating your post, please try again later"
+      render "new"
     end
-    redirect_to feed_path
   end
 
   def show
@@ -41,12 +42,13 @@ class PostsController < ApplicationController
 
   def update
     if @post.author == current_user
-      if @post.update(post_params)
+      if @post.update(patch_params)
         flash[:notice] = "Post edited successfully"
+        redirect_to feed_path
       else
-        flash[:alert] = "There has been an error editing your post, please try again later"
+        flash.now[:alert] = "There has been an error editing your post, please try again later"
+        render "edit"
       end
-      redirect_to feed_path
     else
       flash[:alert] = "Please log in before trying to edit a post"
       redirect_to new_user_session_path
@@ -56,6 +58,10 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def patch_params
+    params.require(:patch).permit(:content)
   end
 
   def search_post
