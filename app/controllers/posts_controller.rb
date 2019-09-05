@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.author == current_user
-      if @post.update(post_params)
+      if @post.update(patch_params)
         flash[:notice] = "Post edited successfully"
       else
         flash[:alert] = "There has been an error editing your post, please try again later"
@@ -56,6 +56,10 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def patch_params
+    params.require(:patch).permit(:content)
   end
 
   def search_post
