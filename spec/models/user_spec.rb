@@ -2,10 +2,71 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:all) do
+    Friendship.destroy_all
     @user = create(:user)
+    @friend = create(:user, email: 'different_email@email.com')
   end
   
   context "Unit tests" do
+    context "Sending friend requests" do
+      it "can send friend requests" do
+        request = @user.friendships.create(friend: @friend)
+        expect(request).to be_valid
+      end
+
+      it "can't send the same friend request multiple times" do
+        request = @user.friendships.create(friend: @friend)
+        expect(request).to be_valid
+        expect { @user.friendships.create(friend: @friend) }.to raise_error(ActiveRecord::RecordNotUnique)
+      end
+    end
+
+    context "Pending friend requests" do
+      it "shows pending friends" do
+        @user.friendships.create(friend: @friend)
+        expect(@user.pending_friends.first).to eql(@friend)
+      end
+    end
+
+    context "Friend requests" do
+      it "shows friend requests" do
+        @user.friendships.create(friend: @friend)
+        expect(@friend.friend_requests.first).to eql(@user)
+      end
+    end
+
+    context "Confirming friend requests" do
+      it "confirms a friend requests" do
+        @user.friendships.create(friend: @friend)
+        expect(@friend.confirm_friend(@user)).to eql(true)
+      end
+
+      it "confirms a friend requests only one way" do
+        @user.friendships.create(friend: @friend)
+        expect(@user.confirm_friend(@friend)).to eql(false)
+      end
+    end
+
+    context "Showing all friends" do
+      it "shows all the friends" do
+        @user.friendships.create(friend: @friend)
+        @friend.confirm_friend(@user)
+        expect(@friend.friends.first.email).to eql(@user.email)
+      end
+    end
+
+    context "Checking if user is a friend" do
+      it "when not accepted" do
+        @user.friendships.create(friend: @friend)
+        expect(@user.friend?(@friend)).to eql(false)
+      end
+
+      it "when accepted" do
+        @user.friendships.create(friend: @friend)
+        @friend.confirm_friend(@user)
+        expect(@friend.friend?(@user)).to eql(true)
+      end
+    end
 
     context "Create" do
       it "is valid with valid attributes" do
