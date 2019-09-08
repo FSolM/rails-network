@@ -8,7 +8,12 @@ Rails.application.routes.draw do
                                   }
 
   resources :users, only: [:show]
-  resources :posts, only: [:new, :create, :destroy, :edit, :update]
+  resources :posts, only: [:new, :create, :show, :destroy, :edit, :update] do
+    resources :comments, only: [:new, :create, :destroy, :edit, :update]
+  end
+  resources :reactions, only: [:create, :destroy, :update]
+
+  post '/react', to: 'reactions#react'
 
   devise_scope :user do
     get '/users', to: 'devise/registrations#new'

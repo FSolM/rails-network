@@ -7,15 +7,14 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    @recent_posts = Post.last(3).reverse()
+    @recent_posts = Post.last(2).reverse()
     super
   end
 
   # POST /resource
-  def create
-    @recent_posts = Post.last(3).reverse()
-    super
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
