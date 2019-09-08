@@ -21,6 +21,8 @@ RSpec.describe PostsController, type: :controller do
       sign_out(@user)
       post :create, params: { post: { content: "Not going to succeed" } }
       expect(flash[:alert]).to eql('You need to sign in or sign up before continuing.')
+      get :create, params: { post: { content: "Not going to succeed" } }
+      expect(flash[:alert]).to eql("You need to sign in or sign up before continuing.")
     end
 
     it "redirects correctly when the user is not logged in" do
