@@ -1,10 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :search_post, only: %i[destroy update edit]
-
-  def search_post
-    @post = Post.find(params[:id])
-  end
+  before_action :search_post, only: %i[destroy update edit show]
 
   def new
     @post = Post.new
@@ -14,10 +10,15 @@ class PostsController < ApplicationController
     post = current_user.authored_posts.build(post_params)
     if post.save
       flash[:notice] = "You have successfully created a new post"
+      redirect_to feed_path
     else
-      flash[:alert] = "There has been an error when creating your post, please try again later"
+      flash.now[:alert] = "There has been an error when creating your post, please try again later"
+      render "new"
     end
-    redirect_to feed_path
+  end
+
+  def show
+    @comments = @post.comments
   end
 
   def destroy
@@ -40,12 +41,13 @@ class PostsController < ApplicationController
 
   def update
     if @post.author == current_user
-      if @post.update(patch_params)
+      if @post.update(post_params)
         flash[:notice] = "Post edited successfully"
+        redirect_to feed_path
       else
-        flash[:alert] = "There has been an error editing your post, please try again later"
+        flash.now[:alert] = "There has been an error editing your post, please try again later"
+        render "edit"
       end
-      redirect_to feed_path
     else
       flash[:alert] = "Please log in before trying to edit a post"
       redirect_to new_user_session_path
@@ -53,11 +55,11 @@ class PostsController < ApplicationController
   end
 
   private
-    def post_params
-      params.require(:post).permit(:content)
-    end
+  def post_params
+    params.require(:post).permit(:content)
+  end
 
-    def patch_params
-      params.require(:patch).permit(:content)
-    end
+  def search_post
+    @post = Post.find(params[:id])
+  end
 end

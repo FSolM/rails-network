@@ -139,10 +139,9 @@ RSpec.describe User, type: :model do
       end
 
       it "doesn't update the email of a user when is taken" do
-        user = User.last()
+        user = create(:user, email: 'email@email.com')
         used_email = User.first().email
-        user.update(email: used_email)
-        expect(User.last().email).to_not eql(used_email)
+        expect(user.update(email: used_email)).to eql(false)
       end
     end
 

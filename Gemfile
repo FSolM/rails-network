@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'rails', '~> 5.2.3'
@@ -32,8 +33,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 4.0'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
