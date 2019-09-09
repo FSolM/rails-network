@@ -11,6 +11,11 @@
         <!-- User Image Container -->
       </div>
     </div>
+    <% if @user != current_user %>
+      <div class="col-12 friendship-form">
+        Friendship Button
+      </div>
+    <% end %>
   </div>
   <div class="row">
     <div class="container">
