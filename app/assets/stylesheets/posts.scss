@@ -1,0 +1,180 @@
+$background-white: #e0e0e0;
+$dark-blue: #003366;
+$light-black: #252525;
+$light-grey: #aaaaaa;
+$medium-blue: #0052a3;
+$medium-grey: #616161;
+
+// Post New
+
+.container.new-post {
+  background: #ffffff;
+  border-bottom: 1px solid $light-grey;
+  padding-bottom:  1rem;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  .new-post-field {
+    border: none;
+    padding: 2rem;
+  }
+  .actions input[type="submit"] {
+    background-color: $dark-blue;
+    border-radius: 2rem;
+    font-size: 2rem;
+    margin: 0.5rem 0 1rem 2rem;
+    padding: 0.5rem 1rem;
+    &:hover {
+      background-color: $medium-blue;
+      cursor: pointer;
+    }
+  }
+  .new-post-submit {
+    background-color: $medium-blue;
+    border: none;
+    color: white;
+    margin: 0 2.5rem;
+    width: 10%;
+    &:hover {
+      background-color: $dark-blue;
+      transition: background-color 1000ms ease;
+    }
+  }
+}
+
+// Post New
+
+// Post Show
+
+.btn.btn-unliked-big {
+  background-color: $light-grey;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.75rem 2rem;
+  &:hover { background-color: $medium-grey; }
+  a {
+    color: #ffffff;
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.col-post-like { margin: 1rem 0 2rem 0; }
+
+.container.container-show-post {
+  font-size: 2rem;
+  padding: 1rem 2.5rem;
+  .post-control a {
+    color: $medium-grey;
+    margin: 0 1rem;
+  }
+  .post-creator {
+    font-size: 2.4rem;
+    font-style: italic;
+    font-weight: 800;
+    margin: 0 5rem 0 2.5rem;
+    a:hover {
+      color: $medium-blue;
+      text-decoration: none;
+    }
+  }
+  .post-metadata { margin-bottom: 4rem; }
+  .post-title {
+    font-size: 4rem;
+    font-weight: 600;
+    padding: 1.5rem 2rem;
+  }
+}
+
+// Post Show
+
+// Post Edit
+
+.edit-post {
+  border-bottom: 1px solid #000000;
+  padding-bottom:  1rem;
+  .edit-post-field {
+    border: 1px solid $light-grey;
+    color: $light-black;
+    margin: 0 2.5rem 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+  .edit-post-submit {
+    background-color: $medium-blue;
+    border: none;
+    color: white;
+    margin: 0 2.5rem;
+    width: 10%;
+    &:hover {
+      background-color: $dark-blue;
+      transition: background-color 1000ms ease;
+    }
+  }
+}
+
+// Post Edit
+
+// Recent Posts
+
+.post {
+  align-items: center;
+  a:hover { text-decoration: none; }
+  h4 {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
+  .container-post {
+    display: flex;
+    flex-direction: row;
+    padding: 0 0.5rem;
+  }
+  .post-info {
+    padding: 0 0.5rem;
+    text-align: right;
+    width: 100%;
+    h5 {
+      color: $light-grey;
+      font-size: 1.125rem;
+      padding: 0 0.25rem;
+    }
+  }
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 2rem;
+  width: 80%;
+  h5 {
+    color: $medium-grey;
+    font-size: 2rem;
+  }
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 20%;
+  a { font-size: 2rem; }
+  .user-img-mock {
+    background-color: $background-white;
+    border-radius: 50%;
+    content: '';
+    margin: 0 auto;
+    height: 45px;
+    width: 45px;
+  }
+}
+
+.recent-posts {
+  background-color: #ffffff;
+  padding: 5rem 2rem;
+  width: 95%;
+}
+
+// Recent Posts

@@ -1,8 +1,9 @@
+$dark-blue: #003366;
 $light-grey: #aaaaaa;
 $medium-blue: #0052a3;
 $medium-grey: #616161;
 
-// User's Show Page
+// User Show
 
 .container.container-show-user {
   // User Data Row
@@ -68,4 +69,82 @@ $medium-grey: #616161;
   text-align: center;
 }
 
-// User's Show Page
+// User Show
+
+// User Side-bar
+
+.container.container-user {
+  align-content: center;
+  border-right: 1px solid $light-grey;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  min-height: 80vh;                   /* 100 -footer */
+  padding: 1.5rem 2.5rem;
+  position: sticky;
+  top: 0;
+  h2 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+  }
+  h3 {
+    font-size: 2.25rem;
+    margin: 1rem 0;
+  }
+  h4 {
+    font-size: 1.75rem;
+    a { font-size: inherit; }
+    a:hover {
+      color: $medium-blue;
+      text-decoration: none;
+    }
+  }
+  h5 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  .user-friends {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.container-friend {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 0;
+  a:hover {
+    color: $dark-blue;
+    text-decoration: none;
+  }
+  .mock-img {
+    background: $dark-blue;
+    border-radius: 50%;
+    height: 40px;
+    margin: 0 auto 0.5rem auto;
+    width: 40px;
+  }
+}
+
+.row.user-info {
+  border-bottom: 1px dashed $light-grey;
+  margin: 0;
+  text-align: center;
+  .container.container-bio {
+    color: $medium-grey;
+    margin: 2rem 0;
+    padding: 0 2rem;
+    text-align: justify;
+  }
+  .img-mock {
+    background-color: $medium-blue;
+    border-radius: 50%;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+  }
+}
+
+// User Side-bar

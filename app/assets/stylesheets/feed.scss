@@ -1,0 +1,67 @@
+$light-black: #252525;
+$light-grey: #aaaaaa;
+$medium-grey: #616161;
+
+// Feed Style
+
+.btn.btn-unliked-small {
+  background-color: $light-grey;
+  border: none;
+  font-size: 1.25rem;
+  margin: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
+  &:hover { background-color: $medium-grey; }
+  a {
+    color: #ffffff;
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.container.container-feed {
+  height: 93vh;
+  margin: 0 0 1rem 0;
+  max-width: none;
+  padding: 0;
+  width: 100%;
+  .row {
+    padding: 0;
+    .feed-posts-cont {
+      max-height: 90vh;
+      overflow-y: scroll;
+    }
+    .feed-user-cont {
+      height: 100vh;
+      margin-top: -63px;          /* -nav */
+    }
+  }
+}
+
+.container.container-post-feed { padding: 0; }
+
+.container-feed-alert { padding: 4rem; }
+
+.post {
+  border-bottom: 1px solid $light-grey;
+  margin-top: 1rem;
+  .post-content h5 { color: $light-black; }
+}
+
+.post-modif {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  margin: 0 auto;
+  li {
+    margin: 0 1rem;
+    a {
+      color: $medium-grey;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// Feed Style
