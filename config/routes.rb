@@ -7,11 +7,12 @@ Rails.application.routes.draw do
                                     omniauth_callbacks: "user/omniauth_callbacks",
                                   }
 
-  resources :users, only: [:show]
+  resources :friendships, only: [:create, :destroy]
   resources :posts, only: [:new, :create, :show, :destroy, :edit, :update] do
     resources :comments, only: [:new, :create, :destroy, :edit, :update]
   end
   resources :reactions, only: [:create, :destroy, :update]
+  resources :users, only: [:show]
 
   post '/react', to: 'reactions#react'
 
