@@ -1,10 +1,65 @@
-<div class="container container-feed">
+<div class="container container-show-user">
   <div class="row">
-    <div class="col-md-4 feed-user-cont">
-      <%= render "layouts/user_sidebar" %>
+    <div class="col-7">
+      <div class="container">
+        <div class="col-12"><span class="user-name"><%= @user.name %></span></div>
+        <div class="col-12"><span class="user-email"><%= @user.email %></span></div>
+      </div>
     </div>
-    <div class="col-md-8 feed-posts-cont">
-      <%= render "posts/index" %>
+    <div class="col-5">
+      <div class="container">
+        <!-- User Image Container -->
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div class="col-12">About</div>
+      <div class="container user-description">
+        <%= @user.bio || "No description :[" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 user-recent-post">
+      <div class="container">
+        <div class="col-12">Recent Posts</div>
+        <% if @recent_posts %>
+          <div class="container recent-posts">  
+            <% @recent_posts.each do |post| %>
+              <div class="row user-post">
+                <div class="col-9 user-post-title">
+                  <%= link_to post.content, post_path(post) %>
+                </div>
+                <div class="col-3 user-post-likes"><%= post.reactions.count %></div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="col-12 user-nill-message">No posts found :[</div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-6 user-friends">
+      <div class="container">
+        <div class="col-12">Friends</div>
+        <% if @user_friends %>
+          <div class="row user-friends">  
+            <% @user_friends.each do |friend| %>
+              <div class="col-6 user-friend">
+                <div class="container">
+                  <div class="col-12 friend-img"></div>
+                  <div class="col-12 friend-name">
+                    <%= link_to friend.name, user_path(friend) %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="col-12 user-nill-message">I'm also lonely :[</div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
