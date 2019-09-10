@@ -1,0 +1,15 @@
+<h2>Pending friend requests</h2>
+<% if @pending_friends.empty? %>
+  <h4>You don't have pending friend requests</h4>
+<% else %>
+  <div class="friend-requests-container">
+    <% @pending_friends.each do |user| %>
+      <div class="friend-request">
+        <!--- Add user image -->
+        <h1><%= link_to "#{user.name}", user_path(user) %></h1>
+        <!-- Add inactive "sent" button -->
+        <%= link_to "Accept friend", cancel_friend_request_url(user_id: user.id) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

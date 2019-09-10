@@ -2,6 +2,12 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   before_action :search_user, only: %i[add_friend cancel_friend_request decline_friend_request remove_friend accept_friend_request]
 
+  def show
+    @friends = current_user.friends
+    @pending_friends = current_user.pending_friends
+    @friend_requests = current_user.friend_requests
+  end
+
   def add_friend
     if current_user.friend?(@user)
       flash[:alert] = "You are already friends"
@@ -12,6 +18,7 @@ class FriendshipsController < ApplicationController
         flash[:alert] = "Unexpected error, please try again later"
       end
     end
+    redirect_to friendship_path(current_user)
   end
 
   def cancel_friend_request
@@ -24,11 +31,12 @@ class FriendshipsController < ApplicationController
     else
       flash[:alert] = "It seems like you haven't sent #{@user.name} a friend request"
     end
+    redirect_to friendship_path(current_user)
   end
 
   def remove_friend
     if current_user.friend?(@user)
-      if current_user.decline_friend(@user)
+      if current_user.delete_friend(@user)
         flash[:notice] = 'Friend removed'
       else
         flash[:warning] = 'Unexpected error, please try again later'
@@ -36,14 +44,17 @@ class FriendshipsController < ApplicationController
     else
       flash[:alert] = "It seems like #{@user.name} isn't your friend"
     end
+    redirect_to friendship_path(current_user)
   end
 
   def accept_friend_request
     current_user.confirm_friend(@user)
+    redirect_to friendship_path(current_user)
   end
 
   def decline_friend_request
     current_user.decline_friend(@user)
+    redirect_to friendship_path(current_user)
   end
 
   private

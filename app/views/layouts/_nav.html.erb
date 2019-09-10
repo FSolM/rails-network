@@ -3,6 +3,7 @@
     <% if signed_in? %>
       <li><%= link_to "Home", feed_path %></li>
       <li><%= link_to "Profile", user_path(current_user) %></li>
+      <li><%= link_to "Friends", friendship_path(current_user) %></li>
       <li><%= link_to "Settings", "#" %></li>
       <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
     <% else %>

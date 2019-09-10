@@ -14,7 +14,7 @@
     <% if @user != current_user%>
       <div class="col-12 friendship-form">
         <% if current_user.friend?(@user) %>
-          <%= link_to "Delete friend", %>
+          <%= link_to "Delete friend" %>
         <% else %>
           <% if current_user.request_sent?(@user) %>
             <%= link_to "Cancel friend request", cancel_friend_request_url(user_id: @user), remote: true %>

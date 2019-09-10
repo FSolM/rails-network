@@ -11,11 +11,16 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create show destroy edit update] do
     resources :comments, only: %i[new create destroy edit update]
   end
+  resources :friendships, only: %i[show]
   resources :reactions, only: [:create, :destroy, :update]
   resources :users, only: [:show, :edit, :update]
 
   get 'add_friend', to: 'friendships#add_friend'
   get 'cancel_friend_request', to: 'friendships#cancel_friend_request'
+  get 'accept_friend_request', to: 'friendships#accept_friend_request'
+  get 'remove_friend', to: 'friendships#remove_friend'
+  get 'decline_friend_request', to: 'friendships#decline_friend_request'
+
   post '/react', to: 'reactions#react'
 
   devise_scope :user do
