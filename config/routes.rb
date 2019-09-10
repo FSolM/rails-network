@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :destroy, :edit, :update]
   end
   resources :reactions, only: [:create, :destroy, :update]
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 
   post '/react', to: 'reactions#react'
 
