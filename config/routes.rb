@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create show destroy edit update] do
     resources :comments, only: %i[new create destroy edit update]
   end
-  resources :reactions, only: %i[create destroy update]
-  resources :users, only: %i[show]
+  resources :reactions, only: [:create, :destroy, :update]
+  resources :users, only: [:show, :edit, :update]
 
   get 'add_friend', to: 'friendships#add_friend'
   get 'cancel_friend_request', to: 'friendships#cancel_friend_request'
