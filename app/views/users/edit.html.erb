@@ -3,12 +3,9 @@
     <div class="row">
       <div class="col-7">
         <div class="container">
-          <div class="col-12"><span class="user-name">
-            <%= f.text_field :name %>
-          </span></div>
-          <div class="col-12"><span class="user-email">
-            <%= f.text_field :email %>
-          </span></div>
+          <div class="col-12 user-name"><%= f.text_field :name %></div>
+          <div class="col-12 user-email"><%= f.text_field :email %></div>
+          <div class="col-12 user-birthday"><%= f.date_field :birth_day %></div>
         </div>
       </div>
       <div class="col-5">

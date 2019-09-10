@@ -22,29 +22,29 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :bio)
+    params.require(:user).permit(:name, :email, :birth_day, :bio)
   end
 
   def get_birthday(user)
     birthday = user.birth_day.to_s.split('-')
     case birthday[1]
-    when "1"
+    when "01"
       birthday[1] = "Jan"
-    when "2"
+    when "02"
       birthday[1] = "Feb"
-    when "3"
+    when "03"
       birthday[1] = "Mar"
-    when "4"
+    when "04"
       birthday[1] = "Apr"
-    when "5"
+    when "05"
       birthday[1] = "May"
-    when "6"
+    when "06"
       birthday[1] = "Jun"
-    when "7"
+    when "07"
       birthday[1] = "Jul"
-    when "8"
+    when "08"
       birthday[1] = "Aug"
-    when "9"
+    when "09"
       birthday[1] = "Sep"
     when "10"
       birthday[1] = "Oct"

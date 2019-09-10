@@ -2,8 +2,11 @@
   <div class="row">
     <div class="col-7">
       <div class="container">
-        <div class="col-12"><span class="user-name"><%= @user.name %></span></div>
-        <div class="col-12"><span class="user-email"><%= @user.email %></span></div>
+        <div class="col-12 user-name"><%= @user.name %></div>
+        <div class="col-12 user-email"><%= @user.email %></div>
+        <div class="col-12 user-birthday">
+          <%= @user_birthday[1] %> / <%= @user_birthday[2] %> / <%= @user_birthday[0] %>
+        </div>
       </div>
     </div>
     <div class="col-5">
