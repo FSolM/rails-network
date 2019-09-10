@@ -11,9 +11,17 @@
         <!-- User Image Container -->
       </div>
     </div>
-    <% if @user != current_user %>
+    <% if @user != current_user%>
       <div class="col-12 friendship-form">
-        Friendship Button
+        <% if current_user.friend?(@user) %>
+          <%= link_to "Delete friend", %>
+        <% else %>
+          <% if current_user.request_sent?(@user) %>
+            <%= link_to "Cancel friend request", cancel_friend_request_url(user_id: @user), remote: true %>
+          <% else %>
+            <%= link_to "Send friend request", add_friend_url(user_id: @user), remote: true %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>

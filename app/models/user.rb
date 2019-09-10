@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :authored_posts, foreign_key: :author_id, class_name: :Post, dependent: :destroy
   has_many :authored_comments, foreign_key: :author_id, class_name: :Comment, dependent: :destroy
   has_many :reactions, dependent: :destroy
-  has_many :friendships
-  has_many :inverse_friendships,  class_name: :Friendship, foreign_key: :friend_id
+  has_many :friendships, dependent: :destroy
+  has_many :inverse_friendships,  class_name: :Friendship, foreign_key: :friend_id, dependent: :destroy
   
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if !friendship.nil? && friendship.accepted }
@@ -30,6 +30,28 @@ class User < ApplicationRecord
     return false if friendship.nil?
     friendship.accepted = true
     friendship.save
+  end
+
+  def decline_friend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    return false if friendship.nil?
+    friendship.accepted = false
+    friendship.save
+  end
+  
+  def request_sent?(user)
+    !friendships.where(friend: user).empty?
+  end
+
+  def cancel_friend_request(user)
+    friendship = friendships.where(friend: user, accepted: nil)
+    Friendship.destroy(friendship.ids) unless friendship.nil?
+  end
+
+  def delete_friend(user)
+    friendship = friendships.where(friend: user, accepted: true)
+    friendship = inverse_friendships.where(user: user, accepted: true) if friendship.empty?
+    Friendship.destroy(friendship.ids) unless friendship.nil?
   end
 
   def friend?(user)
