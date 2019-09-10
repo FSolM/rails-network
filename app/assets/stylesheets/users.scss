@@ -6,6 +6,11 @@ $medium-grey: #616161;
 // User Show
 
 .container.container-show-user {
+  .col-12.edit-user {
+    font-size: 2.2rem;
+    text-align: center;
+    a:hover { text-decoration: none; }
+  }
   // User Data Row
   > .row:nth-child(1) [class^="col-"]:nth-child(1) {
     text-align: right;
@@ -80,7 +85,7 @@ $medium-grey: #616161;
   flex-direction: column;
   height: 100%;
   justify-content: flex-start;
-  min-height: 80vh;                   /* 100 -footer */
+  min-height: 80vh;                   // 100 -footer
   padding: 1.5rem 2.5rem;
   position: sticky;
   top: 0;
