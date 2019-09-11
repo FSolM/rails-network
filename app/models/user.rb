@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :authored_comments, foreign_key: :author_id, class_name: :Comment, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships,  class_name: :Friendship, foreign_key: :friend_id, dependent: :destroy
   
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if !friendship.nil? && friendship.accepted }
