@@ -8,8 +8,8 @@
             <div class="col-8 request-name">
               <%= link_to request.name, user_path(request) %>
             </div>
-            <div class="col-4">
-              <%= link_to "Accept", accept_friend_request_url(user_id: request.id) %>
+            <div class="col-4 request-decline delete">
+              <%= link_to "Cancel", cancel_friend_request_url(user_id: request.id) %>
             </div>
           </div>
         <% end %>

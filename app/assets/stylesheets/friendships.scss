@@ -45,16 +45,32 @@ $medium-red: #da1313;
   }
 }
 
-.col-2.request-accept {
+[class^="col-"].request-accept {
   background-color: $dark-green;
   &:hover { background-color: $medium-green; }
   a:hover { text-decoration: none; }
 }
 
-.col-2.request-decline {
+[class^="col-"].request-decline {
   background-color: $dark-red;
   &:hover { background-color: $medium-red; }
   a:hover { text-decoration: none; }
 }
 
 // Request Partial
+
+// Pending Partial
+
+.container.container-friendships-pending { padding: 0; }
+
+.request-decline.delete {
+  align-self: center;
+  font-size: 1.6rem;
+  padding: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 20%;
+  a { color: #ffffff; }
+}
+
+// Pending Partial
