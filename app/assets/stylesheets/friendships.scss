@@ -74,3 +74,27 @@ $medium-red: #da1313;
 }
 
 // Pending Partial
+
+// Friends All Partial
+
+.container.container-friendships-all { padding: 0; }
+
+.container.friend-all {
+  .friend-name {
+    align-self: center;
+    font-size: 3.2rem;
+    a:hover { text-decoration: none; }
+  }
+  .friend-remove {
+    align-self: center;
+    background-color: $medium-red;
+    font-size: 2rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    a { color: #ffffff; }
+    a:hover { text-decoration: none; }
+    &:hover { background-color: $dark-red; }
+  }
+}
+
+// Friends All Partial

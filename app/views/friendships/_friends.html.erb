@@ -1,4 +1,4 @@
-<div class="container container-friendship-pending">
+<div class="container container-friendship-all">
   <div class="row">
     <div class="col-12 friendships-menu">Friends</div>
     <% unless @friends.empty? %>
@@ -8,10 +8,10 @@
             <div class="col-3 friend-img">
               <!-- Friend Img -->
             </div>
-            <div class="col-6">
+            <div class="col-6 friend-name">
               <%= link_to friend.name, user_path(friend) %>
             </div>
-            <div class="col-3">
+            <div class="col-3 friend-remove">
               <%= link_to "Remove Friend", remove_friend_url(user_id: friend.id) %>
             </div>
           </div>
