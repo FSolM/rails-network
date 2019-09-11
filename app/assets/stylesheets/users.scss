@@ -92,14 +92,11 @@ $medium-grey: #616161;
   // User Data Row
   > .row:nth-child(1) [class^="col-"]:nth-child(1) {
     text-align: right;
+    .user-birthday { font-size: 2.8rem; }
+    .user-email { font-size: 3.2rem; }
     .user-name {
       font-size: 3.8rem;
       font-weight: 600;
-      padding: 1.5rem 0;
-    }
-    .user-email {
-      font-size: 3.2rem;
-      padding: 1rem 0;
     }
   }
   // User Bio Row
@@ -173,6 +170,8 @@ $medium-grey: #616161;
     }
   }
   
+  .user-birthday input { text-align: center; }
+
   .user-email input,
   .user-name input { text-align: right; }
 
