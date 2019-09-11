@@ -1,5 +1,9 @@
 $dark-blue: #003366;
+$dark-green: #007406;
+$dark-red: #b10303;
+$medium-green: #00cf0a;
 $medium-grey: #616161;
+$medium-red: #da1313;
 
 // General Style
 
@@ -21,3 +25,36 @@ $medium-grey: #616161;
 }
 
 // General Style
+
+// Request Partial
+
+.container.friend-requests {
+  padding: 0;
+  .col-8 {
+    align-self: center;
+    font-size: 2.4rem;
+    font-weight: 600;
+    a:hover { text-decoration: none; }
+  }
+  .col-2 {
+    font-size: 1.6rem;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    a { color: #ffffff; }
+  }
+}
+
+.col-2.request-accept {
+  background-color: $dark-green;
+  &:hover { background-color: $medium-green; }
+  a:hover { text-decoration: none; }
+}
+
+.col-2.request-decline {
+  background-color: $dark-red;
+  &:hover { background-color: $medium-red; }
+  a:hover { text-decoration: none; }
+}
+
+// Request Partial

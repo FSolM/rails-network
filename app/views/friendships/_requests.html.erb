@@ -8,10 +8,10 @@
             <div class="col-8 request-name">
               <%= link_to request.name, user_path(request) %>
             </div>
-            <div class="col-2">
+            <div class="col-2 request-accept">
               <%= link_to "Accept", accept_friend_request_url(user_id: request.id) %>
             </div>
-            <div class="col-2">
+            <div class="col-2 request-decline">
               <%= link_to "Decline", decline_friend_request_url(user_id: request.id) %>
             </div>
           </div>
