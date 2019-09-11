@@ -5,7 +5,7 @@
         <div class="col-12 user-name"><%= @user.name %></div>
         <div class="col-12 user-email"><%= @user.email %></div>
         <div class="col-12 user-birthday">
-          <%= @user_birthday[1] %> / <%= @user_birthday[2] %> / <%= @user_birthday[0] %>
+          <%= @user_birthday[1] || "mm" %> / <%= @user_birthday[2] || "dd" %> / <%= @user_birthday[0] || "yy" %>
         </div>
       </div>
     </div>
@@ -15,14 +15,14 @@
       </div>
     </div>
     <% if @user != current_user%>
-      <div class="col-12 friendship-form">
+      <div class="col-4 friendship-form">
         <% if current_user.friend?(@user) %>
-          <%= link_to "Delete friend" %>
+          <%= link_to "Delete friend", class: "delete-friend" %>
         <% else %>
           <% if current_user.request_sent?(@user) %>
-            <%= link_to "Cancel friend request", cancel_friend_request_url(user_id: @user), remote: true %>
+            <%= link_to "Cancel friend request", cancel_friend_request_url(user_id: @user), remote: true, class: "cancel-friend" %>
           <% else %>
-            <%= link_to "Send friend request", add_friend_url(user_id: @user), remote: true %>
+            <%= link_to "Send friend request", add_friend_url(user_id: @user), remote: true, class: "send-friend" %>
           <% end %>
         <% end %>
       </div>
