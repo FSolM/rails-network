@@ -17,12 +17,12 @@
     <% if @user != current_user%>
       <div class="col-4 friendship-form">
         <% if current_user.friend?(@user) %>
-          <%= link_to "Delete friend", class: "delete-friend" %>
+          <%= link_to "Delete friend", remove_friend_path(user_id: @user), class: "delete-friend" %>
         <% else %>
           <% if current_user.request_sent?(@user) %>
-            <%= link_to "Cancel friend request", cancel_friend_request_url(user_id: @user), remote: true, class: "cancel-friend" %>
+            <%= link_to "Cancel friend request", cancel_friend_request_url(user_id: @user), class: "cancel-friend" %>
           <% else %>
-            <%= link_to "Send friend request", add_friend_url(user_id: @user), remote: true, class: "send-friend" %>
+            <%= link_to "Send friend request", add_friend_url(user_id: @user), class: "send-friend" %>
           <% end %>
         <% end %>
       </div>
