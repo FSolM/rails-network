@@ -1,11 +1,11 @@
-<div class="requests">
-  <%= render '/friendships/requests'%>
-</div>
-<hr>
-<div class="sent-friend-requests">
-  <%= render '/friendships/pending'%>
-</div>
-<hr>
-<div class="friends-display">
-  <%= render '/friendships/friends'%>
+<div class="container container-friendships-menu">
+  <div class="row row-friendship-requests">
+    <%= render '/friendships/requests'%>
+  </div>
+  <div class="row row-friendship-pending">
+    <%= render '/friendships/pending'%>
+  </div>
+  <div class="row row-friendship-all">
+    <%= render '/friendships/friends'%>
+  </div>
 </div>

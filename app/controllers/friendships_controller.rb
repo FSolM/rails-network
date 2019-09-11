@@ -18,7 +18,7 @@ class FriendshipsController < ApplicationController
         flash[:alert] = "Unexpected error, please try again later"
       end
     end
-    redirect_to friendship_path(current_user)
+    redirect_back fallback_location: feed_path
   end
 
   def cancel_friend_request
@@ -31,7 +31,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:alert] = "It seems like you haven't sent #{@user.name} a friend request"
     end
-    redirect_to friendship_path(current_user)
+    redirect_back fallback_location: feed_path
   end
 
   def remove_friend
@@ -44,17 +44,17 @@ class FriendshipsController < ApplicationController
     else
       flash[:alert] = "It seems like #{@user.name} isn't your friend"
     end
-    redirect_to friendship_path(current_user)
+    redirect_back fallback_location: feed_path
   end
 
   def accept_friend_request
     current_user.confirm_friend(@user)
-    redirect_to friendship_path(current_user)
+    redirect_back fallback_location: feed_path
   end
 
   def decline_friend_request
     current_user.decline_friend(@user)
-    redirect_to friendship_path(current_user)
+    redirect_back fallback_location: feed_path
   end
 
   private

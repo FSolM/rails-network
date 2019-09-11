@@ -1,3 +1,100 @@
-// Place all the styles related to the friendships controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$dark-blue: #003366;
+$dark-green: #007406;
+$dark-red: #b10303;
+$medium-green: #00cf0a;
+$medium-grey: #616161;
+$medium-red: #da1313;
+
+// General Style
+
+.container.container-friendships-menu .row { padding: 2.5rem 0.5rem; }
+
+.col-12 {
+  &.friendships-error-message {
+    color: $medium-grey;
+    font-size: 2.6rem;
+    font-style: italic;
+    text-align: center;
+  }
+  &.friendships-menu {
+    color: $dark-blue;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0.5rem 0;
+  }
+}
+
+// General Style
+
+// Request Partial
+
+.container.friend-requests {
+  padding: 0;
+  .col-8 {
+    align-self: center;
+    font-size: 2.4rem;
+    font-weight: 600;
+    a:hover { text-decoration: none; }
+  }
+  .col-2 {
+    font-size: 1.6rem;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    a { color: #ffffff; }
+  }
+}
+
+[class^="col-"].request-accept {
+  background-color: $dark-green;
+  &:hover { background-color: $medium-green; }
+  a:hover { text-decoration: none; }
+}
+
+[class^="col-"].request-decline {
+  background-color: $dark-red;
+  &:hover { background-color: $medium-red; }
+  a:hover { text-decoration: none; }
+}
+
+// Request Partial
+
+// Pending Partial
+
+.container.container-friendships-pending { padding: 0; }
+
+.request-decline.delete {
+  align-self: center;
+  font-size: 1.6rem;
+  padding: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 20%;
+  a { color: #ffffff; }
+}
+
+// Pending Partial
+
+// Friends All Partial
+
+.container.container-friendships-all { padding: 0; }
+
+.container.friend-all {
+  .friend-name {
+    align-self: center;
+    font-size: 3.2rem;
+    a:hover { text-decoration: none; }
+  }
+  .friend-remove {
+    align-self: center;
+    background-color: $medium-red;
+    font-size: 2rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    a { color: #ffffff; }
+    a:hover { text-decoration: none; }
+    &:hover { background-color: $dark-red; }
+  }
+}
+
+// Friends All Partial

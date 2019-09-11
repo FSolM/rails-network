@@ -1,7 +1,10 @@
 $dark-blue: #003366;
 $light-grey: #aaaaaa;
+$dark-red: #b10303;
 $medium-blue: #0052a3;
 $medium-grey: #616161;
+$medium-red: #da1313;
+$thin-grey: #ececec;
 
 // User Side-bar
 
@@ -89,6 +92,7 @@ $medium-grey: #616161;
     text-align: center;
     a:hover { text-decoration: none; }
   }
+  .row { justify-content: center; }
   // User Data Row
   > .row:nth-child(1) [class^="col-"]:nth-child(1) {
     text-align: right;
@@ -119,6 +123,21 @@ $medium-grey: #616161;
       font-weight: 600;
       text-align: center;
     }
+  }
+}
+
+.friendship-form {
+  border: 0.1rem solid $light-grey;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem 0;
+  text-align: center;
+  &:hover { background-color: $thin-grey; }
+  a {
+    &:hover { text-decoration: none; }
+    &.cancel-friend { color: $dark-red; }
+    &.delete-friend { color: $medium-red; }
+    &.send-friend { color: $dark-blue; }
   }
 }
 
