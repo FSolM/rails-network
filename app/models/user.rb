@@ -12,7 +12,7 @@ class User < ApplicationRecord
   
   # Gets all the friends (accepted)
   def friends
-    friends.where(accepted: true).map { |f| f.friend }.compact
+    friendships.where(accepted: true).map { |f| f.friend }.compact
   end
 
   # Sends a friend request to user
@@ -89,7 +89,7 @@ class User < ApplicationRecord
 
   # Returns true if user is a friend false otherwise
   def friend?(user)
-    !friends.where(friend: user).where(accepted: true).empty?
+    !friendships.where(friend: user).where(accepted: true).empty?
   end
 
   private
