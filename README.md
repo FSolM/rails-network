@@ -11,7 +11,7 @@ First install all the required gems
 
 `$ bundler install`
 
-To config the Database (for development and tests)
+##To config the Database (for development and tests):
 
 #### Using bash:
 1. Setup a file `.bashrc` in the root path
