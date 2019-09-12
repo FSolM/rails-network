@@ -23,28 +23,28 @@ default: &default
 
 development:
   <<: *default
-  database: d389sfecb34pq5
+  database: <%= ENV['DATABASE'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: ichuoypkkfxvnj
+  username: <%= ENV['DATABASE_USERNAME'] %>
 
   # The password associated with the postgres role (username).
-  password: 3848795c1bd13c423305addb5fb86cfd32b5c489e079521ed478a5bcb2f2d150
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
   # uri
-  uri:     postgres://ichuoypkkfxvnj:3848795c1bd13c423305addb5fb86cfd32b5c489e079521ed478a5bcb2f2d150@ec2-50-19-124-157.compute-1.amazonaws.com:5432/d389sfecb34pq5
+  uri: <%= ENV['DATABASE_URI'] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  host: ec2-50-19-124-157.compute-1.amazonaws.com
+  host: <%= ENV['DATABASE_HOST'] %>
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  port: 5432
+  port: <%= ENV['DATABASE_PORT'] %>
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -61,11 +61,11 @@ development:
 
 test:
   <<: *default
-  host: localhost
-  database: odin_fb_test
-  user: odin_fb
-  port: 5432
-  password: admin
+  host: <%= ENV['TEST_HOST'] %>
+  database: <%= ENV['TEST_DATABASE'] %>
+  user: <%= ENV['TEST_USERNAME'] %>
+  port: <%= ENV['TEST_PORT'] %>
+  password: <%= ENV['TEST_PASSWORD'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
