@@ -1,0 +1,24 @@
+<div class="container container-friendship-all">
+  <div class="row">
+    <div class="col-12 friendships-menu">Friends</div>
+    <% unless @friends.empty? %>
+      <div class="container friend-all">
+        <% @friends.each do |friend| %>
+          <div class="row">
+            <div class="col-3 friend-img">
+              <!-- Friend Img -->
+            </div>
+            <div class="col-6 friend-name">
+              <%= link_to friend.name, user_path(friend) %>
+            </div>
+            <div class="col-3 friend-remove">
+              <%= link_to "Remove Friend", remove_friend_url(user_id: friend.id) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-12 friendships-error-message">Let's be alone together :]</div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,200 @@
+$dark-blue: #003366;
+$light-grey: #aaaaaa;
+$dark-red: #b10303;
+$medium-blue: #0052a3;
+$medium-grey: #616161;
+$medium-red: #da1313;
+$thin-grey: #ececec;
+
+// User Side-bar
+
+.container.container-user {
+  align-content: center;
+  border-right: 1px solid $light-grey;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  min-height: 80vh;                   // 100 -footer
+  padding: 1.5rem 2.5rem;
+  position: sticky;
+  top: 0;
+  h2 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+  }
+  h3 {
+    font-size: 2.25rem;
+    margin: 1rem 0;
+  }
+  h4 {
+    font-size: 1.75rem;
+    a { font-size: inherit; }
+    a:hover {
+      color: $medium-blue;
+      text-decoration: none;
+    }
+  }
+  h5 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  .user-friends {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.container-friend {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 0;
+  a:hover {
+    color: $dark-blue;
+    text-decoration: none;
+  }
+  .mock-img {
+    background: $dark-blue;
+    border-radius: 50%;
+    height: 40px;
+    margin: 0 auto 0.5rem auto;
+    width: 40px;
+  }
+}
+
+.row.user-info {
+  border-bottom: 1px dashed $light-grey;
+  margin: 0;
+  text-align: center;
+  .container.container-bio {
+    color: $medium-grey;
+    margin: 2rem 0;
+    padding: 0 2rem;
+    text-align: justify;
+  }
+  .img-mock {
+    background-color: $medium-blue;
+    border-radius: 50%;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+  }
+}
+
+// User Side-bar
+
+// User Show
+
+.container.container-show-user {
+  .col-12.edit-user {
+    font-size: 2.2rem;
+    text-align: center;
+    a:hover { text-decoration: none; }
+  }
+  .row { justify-content: center; }
+  // User Data Row
+  > .row:nth-child(1) [class^="col-"]:nth-child(1) {
+    text-align: right;
+    .user-birthday { font-size: 2.8rem; }
+    .user-email { font-size: 3.2rem; }
+    .user-name {
+      font-size: 3.8rem;
+      font-weight: 600;
+    }
+  }
+  // User Bio Row
+  > .row:nth-child(2) .container {
+    > .col-12 {
+      font-size: 3.4rem;
+      font-weight: 600;
+      padding: 1rem 0 1rem 6rem;
+    }
+    .container.user-description {
+      border: 0.2rem solid $light-grey;
+      font-size: 2.8rem;
+      padding: 2.5rem;
+    }
+  }
+  // Meta Info Row
+  > .row:nth-child(3) .col-6 {
+    > .container .col-12:nth-child(1) {
+      font-size: 3.4rem;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+.friendship-form {
+  border: 0.1rem solid $light-grey;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem 0;
+  text-align: center;
+  &:hover { background-color: $thin-grey; }
+  a {
+    &:hover { text-decoration: none; }
+    &.cancel-friend { color: $dark-red; }
+    &.delete-friend { color: $medium-red; }
+    &.send-friend { color: $dark-blue; }
+  }
+}
+
+.row.user-post {
+  border: 0.1rem solid $light-grey;
+  font-size: 2.8rem;
+  padding: 2rem;
+  .col-9.user-post-title a:hover { text-decoration: none; }
+  .col-3.user-post-likes {
+    color: $medium-blue;
+    text-align: center;
+  }
+}
+
+.row.user-friends > .user-friend {
+  text-align: center;
+  .col-12.friend-name {
+    font-size: 2.4rem;
+    font-weight: 600;
+    a:hover { text-decoration: none; }
+  }
+}
+
+.col-12.user-nill-message {
+  color: $medium-grey;
+  font-size: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+// User Show
+
+// User Edit
+
+.container.container-show-user.edit {
+  .actions {
+    text-align: center;
+    .btn.update-user-data {
+      background-color: $dark-blue;
+      color: #ffffff;
+      font-size: 2.2rem;
+      margin: 2.5rem 0;
+      padding: 1.5rem 0;
+      width: 35%;
+    }
+    .btn.update-user-data:hover {
+      background-color: $medium-blue;
+      cursor: pointer;
+    }
+  }
+  
+  .user-birthday input { text-align: center; }
+
+  .user-email input,
+  .user-name input { text-align: right; }
+
+  .user-description input { width: 100%; }
+}
+
+// User Edit
