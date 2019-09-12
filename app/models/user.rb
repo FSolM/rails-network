@@ -44,14 +44,16 @@ class User < ApplicationRecord
   end
 
   def cancel_friend_request(user)
-    friendship = friendships.where(friend: user, accepted: nil)
-    Friendship.destroy(friendship.ids) unless friendship.nil?
+    friendship = friendships.where(friend: user, accepted: nil).first
+    return false if friendship.nil?
+    friendship.destroy
   end
 
   def delete_friend(user)
-    friendship = friendships.where(friend: user, accepted: true)
-    friendship = inverse_friendships.where(user: user, accepted: true) if friendship.empty?
-    Friendship.destroy(friendship.ids) unless friendship.nil?
+    friendship = friendships.where(friend: user, accepted: true).first
+    friendship = inverse_friendships.where(user: user, accepted: true).first if friendship.nil?
+    return false if friendship.nil?
+    friendship.destroy
   end
 
   def friend?(user)

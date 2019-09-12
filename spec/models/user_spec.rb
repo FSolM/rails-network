@@ -47,6 +47,37 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "Declining friend request" do
+      it "declining a friend request" do
+        @user.friendships.create(friend: @friend)
+        expect(@friend.decline_friend(@user)).to eql(true)
+      end
+
+      it "declining a friend request only one way" do
+        @user.friendships.create(friend: @friend)
+        expect(@user.decline_friend(@friend)).to eql(false)
+      end
+    end
+
+    context "Checking if request sent" do
+      it "true when friend request sent" do
+        @user.friendships.create(friend: @friend)
+        expect(@user.request_sent?(@friend)).to eql(true)
+      end
+
+      it "false when friend request not sent" do
+        expect(@user.request_sent?(@friend)).to eql(false)
+      end
+    end
+
+    context "Canceling friend request" do
+      it "Deletes friend request" do
+        @user.friendships.create(friend: @friend)
+        @user.cancel_friend_request(@friend)
+        expect(Friendship.count).to eql(0)
+      end
+    end
+
     context "Showing all friends" do
       it "shows all the friends" do
         @user.friendships.create(friend: @friend)
