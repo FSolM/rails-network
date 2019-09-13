@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User Controller; user flow control
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
@@ -12,47 +15,23 @@ class UsersController < ApplicationController
 
   def update
     if User.find(params[:id]).update(user_params)
-      flash[:notice] = "You have successfully updated your profile"
+      flash[:notice] = 'Profile updated'
       redirect_to user_path(current_user)
     else
-      flash.now[:alert] = "There has been an error while editing your profile, please try again later"
-      render "edit"
+      flash.now[:alert] = "We couldn't update your profile"
+      render 'edit'
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :birth_day, :bio)
   end
 
   def get_birthday(user)
-    birthday = user.birth_day.to_s.split('-')
-    case birthday[1]
-    when "01"
-      birthday[1] = "Jan"
-    when "02"
-      birthday[1] = "Feb"
-    when "03"
-      birthday[1] = "Mar"
-    when "04"
-      birthday[1] = "Apr"
-    when "05"
-      birthday[1] = "May"
-    when "06"
-      birthday[1] = "Jun"
-    when "07"
-      birthday[1] = "Jul"
-    when "08"
-      birthday[1] = "Aug"
-    when "09"
-      birthday[1] = "Sep"
-    when "10"
-      birthday[1] = "Oct"
-    when "11"
-      birthday[1] = "Nov"
-    when "12"
-      birthday[1] = "Dic"
-    end
-    birthday
+    date = user.birth_day.to_s.split('-')
+    month = Date::MONTHNAMES[date[1].to_i]
+    month[0..2]
   end
 end

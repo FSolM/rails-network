@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Comments Controller; everything related to how comments work in the app
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :search_comment, only: %i[destroy update edit]
@@ -5,51 +8,45 @@ class CommentsController < ApplicationController
 
   def new
     @post = Post.find(params[:id])
-    @comment = @post.comment.build()
+    @comment = @post.comment.build
   end
 
   def create
-    comment = current_user.authored_comments.build(comment_params)
-    if comment.save
-      flash[:notice] = "You have successfully commented a post"
+    if current_user.authored_comments.create(comment_params)
       redirect_to post_path(@post)
     else
-      flash.now[:alert] = "There has been an error when creating your comment, please try again later"
-      render "new"
+      flash.now[:alert] = 'There has been an error while commenting'
+      render 'new'
     end
   end
 
   def edit; end
 
   def update
-    if @comment.author == current_user
-      if @comment.update(comment_params)
-        flash[:notice] = "You have successfully edited a comment"
-        redirect_to post_path(@post)
-      else
-        flash.now[:alert] = "There has been an error when editing your comment, please try again later"
-        render "edit"
-      end
+    if @comment.author == current_user && @comment.update(comment_params)
+      flash[:alert] = 'Comment updated'
+      redirect_to post_path(@post)
     else
-      flash.now[:alert] = "You can't edit a comment that you don't own, please login"
-      render "edit"
+      flash.now[:alert] = 'There has been an error when editing your comment'
+      render 'edit'
     end
   end
 
   def destroy
     if @comment.author == current_user
       if @comment.destroy
-        flash[:notice] = "You have successfully deleted a comment"
+        flash[:notice] = 'Your comment has been deleted'
       else
-        flash[:alert] = "There has been an error when deleting your comment, please try again later"
+        flash[:alert] = 'There has been an error while deleting your comment'
       end
     else
-      flash[:alert] = "You can't delete a comment that you don't own, please login"
+      flash[:alert] = "You can't delete comments that you don't own"
     end
     redirect_to post_path(@post)
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:content, :post_id)
   end
