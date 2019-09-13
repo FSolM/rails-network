@@ -3,7 +3,8 @@
 # User Record; relationships & validations
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: %i[facebook]
 
   validates :name, presence: true
   validates :email, presence: true,
