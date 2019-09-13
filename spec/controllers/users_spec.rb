@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it "assigns @user_friends" do
-      user_friends = User.last(4)
+      user_friends = @user.friends.first(4)
       get :show, params: { id: @user.id }
       expect(assigns(:user_friends)).to eql(user_friends)
     end

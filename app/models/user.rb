@@ -38,12 +38,10 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(user)
-    friendship = friendships.where(friend: user, accepted: nil, sender: false)
-    return false if friendship.empty?
-
-    friendship = user.friendships
-    friendship = friendship.where(friend: self, accepted: nil, sender: true)
-    return false if friendship.empty?
+    friendship = friendships.where(friend: user, accepted: nil, sender: false).first
+    return false if friendship.nil?
+    inverse_friendship = user.friendships.where(friend: self, accepted: nil, sender: true).first
+    return false if inverse_friendship.nil?
 
     ActiveRecord::Base.transaction do
       friendship.update(accepted: true)
@@ -52,12 +50,10 @@ class User < ApplicationRecord
   end
 
   def decline_friend(user)
-    friendship = friendships.where(friend: user, accepted: nil, sender: false)
-    return false if friendship.empty?
-
-    friendship = user.friendships
-    friendship = friendship.where(friend: self, accepted: nil, sender: true)
-    return false if friendship.empty? || inverse_friendship.empty?
+    friendship = friendships.where(friend: user, accepted: nil, sender: false).first
+    return false if friendship.nil?
+    inverse_friendship = user.friendships.where(friend: self, accepted: nil, sender: true).first
+    return false if inverse_friendship.nil?
 
     ActiveRecord::Base.transaction do
       friendship.update(accepted: false)

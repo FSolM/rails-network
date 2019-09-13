@@ -7,11 +7,6 @@ RSpec.describe PostsController, type: :controller do
       sign_in(@user)
     end
 
-    it "creates a flash when creating a post" do
-      post :create, params: { post: { content: "Created in a laboratory" } }
-      expect(flash[:notice]).to eql('You have successfully created a new post')
-    end
-
     it "redirects correctly after creating a post" do
       post :create, params: { post: { content: "Also created in a laboratory" } }
       expect(response).to redirect_to(feed_path)
@@ -54,7 +49,7 @@ RSpec.describe PostsController, type: :controller do
 
     it "creates a flash when removing a post" do
       post :destroy, params: { id: @post.id }
-      expect(flash[:notice]).to eql('Post deleted successfully')
+      expect(flash[:notice]).to eql('Post deleted')
     end
     
     it "redirects correctly after removing a post" do
@@ -104,12 +99,12 @@ RSpec.describe PostsController, type: :controller do
 
     it "creates a flash when edited a post" do
       post :update, params: { id: @post.id, post: { content: 'Post edited in a lab' } }
-      expect(flash[:notice]).to eql('Post edited successfully')
+      expect(flash[:notice]).to eql('Post updated')
     end
     
     it "redirects correctly after removing a post" do
       post :update, params: { id: @post.id, post: { content: 'Post edited in a lab' } }
-      expect(response).to redirect_to(feed_path)
+      expect(response).to redirect_to(@post)
     end
 
     it "creates a flash when the user is not logged in" do
