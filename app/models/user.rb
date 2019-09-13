@@ -30,11 +30,11 @@ class User < ApplicationRecord
   end
 
   def pending_friends
-    friendships.where(accepted: nil).where(sender: true).map(&:friend).compact
+    friendships.where(accepted: nil, sender: true).map(&:friend).compact
   end
 
   def friend_requests
-    friendships.where(accepted: nil).where(sender: false).map(&:friend).compact
+    friendships.where(accepted: nil, sender: false).map(&:friend).compact
   end
 
   def confirm_friend(user)
@@ -66,7 +66,7 @@ class User < ApplicationRecord
   end
 
   def request_sent?(user)
-    !friendships.where(friend: user).where(accepted: nil).where(sender: true).empty?
+    !friendships.where(friend: user, accepted: nil, sender: true).empty?
   end
 
   def cancel_friend_request(user)
