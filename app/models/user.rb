@@ -40,6 +40,7 @@ class User < ApplicationRecord
   def confirm_friend(user)
     friendship = friendships.where(friend: user, accepted: nil, sender: false).first
     return false if friendship.nil?
+
     inverse_friendship = user.friendships.where(friend: self, accepted: nil, sender: true).first
     return false if inverse_friendship.nil?
 
@@ -52,6 +53,7 @@ class User < ApplicationRecord
   def decline_friend(user)
     friendship = friendships.where(friend: user, accepted: nil, sender: false).first
     return false if friendship.nil?
+
     inverse_friendship = user.friendships.where(friend: self, accepted: nil, sender: true).first
     return false if inverse_friendship.nil?
 
