@@ -19,6 +19,15 @@ class User < ApplicationRecord
   has_many :reactions, dependent: :destroy
   has_many :friendships, dependent: :destroy
 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name
+      user.image_link = auth.info.image
+    end
+  end
+
   def friends
     friendships.where(accepted: true).map(&:friend).compact
   end
