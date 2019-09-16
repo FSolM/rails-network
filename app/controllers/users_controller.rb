@@ -30,6 +30,8 @@ class UsersController < ApplicationController
   end
 
   def get_birthday(user)
+    return [] if user.birth_day.nil?
+
     date = user.birth_day.to_s.split('-')
     month = Date::MONTHNAMES[date[1].to_i]
     month[0..2]
