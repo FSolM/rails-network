@@ -72,6 +72,20 @@ footer {
   }
 }
 
+.col-12.registration-omniauth {
+  background-color: $dark-blue;
+  border-radius: 1.5rem;
+  font-size: 1.6rem;
+  margin-top: 2.5rem;
+  padding: 0.5rem 0;
+  &:hover { background-color: $medium-blue; }
+  a {
+    color: #ffffff;
+    text-transform: uppercase;
+    &:hover { text-decoration: none; }
+  }
+}
+
 // Sign Up / Sign In Page
 
 // Footer
