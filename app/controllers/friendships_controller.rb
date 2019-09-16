@@ -17,7 +17,7 @@ class FriendshipsController < ApplicationController
   def add_friend
     if current_user.friend?(@user)
       flash[:alert] = "You're already friends"
-    elsif current_user.friendships.create(friend: @user)
+    elsif current_user.request_friendship(@user)
       flash[:notice] = 'Friend request sent'
     else
       flash[:alert] = 'Something went wrong, try again later'
