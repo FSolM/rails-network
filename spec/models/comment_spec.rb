@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   before(:each) do
     @author = create(:user)
     @post = create(:post)
-    @comment = @author.authored_comments.create( content: 'created in a lab', post: @post)
+    @comment = @author.authored_comments.create(content: 'created in a lab', post: @post)
   end
 
-
-  context 'Unit test' do 
+  context 'Unit test' do
     it 'creates a valid comment' do
       expect(@comment).to be_valid
     end
@@ -25,13 +26,13 @@ RSpec.describe Comment, type: :model do
   end
 
   context 'Integration test' do
-    it "comment can grab author" do
+    it 'comment can grab author' do
       user = create(:user, email: 'author_grabbed@example.com')
-      comment = user.authored_comments.create( post: @post, content: 'boring content')
+      comment = user.authored_comments.create(post: @post, content: 'boring content')
       expect(comment.author.email).to eql('author_grabbed@example.com')
     end
 
-    it "reaction can grab post" do
+    it 'reaction can grab post' do
       expect(@comment.post.content).to eql('Same boring content :(')
     end
   end

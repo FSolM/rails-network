@@ -3,11 +3,10 @@
 class User::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  
 
   # GET /resource/sign_up
   def new
-    @recent_posts = Post.last(2).reverse()
+    @recent_posts = Post.last(2).reverse
     super
   end
 
