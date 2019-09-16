@@ -29,7 +29,7 @@
           <% elsif current_user.request_sent?(@user) %>
             <%= link_to "Cancel friend request", cancel_friend_request_url(user_id: @user), class: "cancel-friend" %>
           <% else %>
-            <%= link_to "Send frienfsssd request", add_friend_url(user_id: @user), class: "send-friend" %>
+            <%= link_to "Send friend request", add_friend_url(user_id: @user), class: "send-friend" %>
           <% end %>
         </div>
       <% end %>
