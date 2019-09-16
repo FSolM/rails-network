@@ -222,7 +222,7 @@ RSpec.describe User, type: :model do
 
     it 'destroys posts when user is destroyed' do
       user = create(:user, email: 'posts_when_user_destroyed@email.com')
-      post = create(:post, content: 'Soon to be destroyed', author: user)
+      create(:post, content: 'Soon to be destroyed', author: user)
       user.destroy
       expect(Post.where(author: user).length).to eql(0)
       expect(Post.where(content: 'Soon to be destroyed').length).to eql(0)
