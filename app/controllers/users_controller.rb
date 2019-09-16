@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_birthday = get_birthday(@user)
+    puts @user_birthday
     @user_friends = @user.friends.first(4)
     @recent_posts = @user.authored_posts.first(5)
   end
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
     return [] if user.birth_day.nil?
 
     date = user.birth_day.to_s.split('-')
-    month = Date::MONTHNAMES[date[1].to_i]
-    month[0..2]
+    date[1] = Date::MONTHNAMES[date[1].to_i][0..2]
+    date
   end
 end
