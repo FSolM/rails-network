@@ -21,8 +21,10 @@
         <div class="actions">
           <%= f.submit "Log in", class: "btn" %>
         </div>
-        <!-- <%= render "users/shared/links" %>  --->
       <% end %>
+      <div class="col-12 registration-omniauth">
+        <%= link_to "Log In with Facebook", user_facebook_omniauth_authorize_path %>
+      </div>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@ class CreateFriendships < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :friend
       t.boolean :accepted
-
+      t.boolean :sender
       t.timestamps
     end
     add_index :friendships, [:user_id, :friend_id], unique: true

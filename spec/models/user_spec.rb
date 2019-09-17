@@ -10,58 +10,62 @@ RSpec.describe User, type: :model do
   context "Unit tests" do
     context "Sending friend requests" do
       it "can send friend requests" do
-        request = @user.friendships.create(friend: @friend)
+        request = @user.request_friendship(@friend)
         expect(request).to be_valid
       end
 
       it "can't send the same friend request multiple times" do
-        request = @user.friendships.create(friend: @friend)
+        request = @user.request_friendship(@friend)
         expect(request).to be_valid
-        expect { @user.friendships.create(friend: @friend) }.to raise_error(ActiveRecord::RecordNotUnique)
+        expect { @user.request_friendship(@friend) }.to raise_error(ActiveRecord::RecordNotUnique)
       end
     end
 
     context "Pending friend requests" do
       it "shows pending friends" do
-        @user.friendships.create(friend: @friend)
+        @user.request_friendship(@friend)
         expect(@user.pending_friends.first).to eql(@friend)
       end
     end
 
     context "Friend requests" do
       it "shows friend requests" do
-        @user.friendships.create(friend: @friend)
+        @user.request_friendship(@friend)
         expect(@friend.friend_requests.first).to eql(@user)
       end
     end
 
     context "Confirming friend requests" do
       it "confirms a friend requests" do
-        @user.friendships.create(friend: @friend)
-        expect(@friend.confirm_friend(@user)).to eql(true)
+        @user.request_friendship(@friend)
+        @friend.confirm_friend(@user)
+        expect(@user.friend?(@friend)).to eql(true)
       end
 
       it "confirms a friend requests only one way" do
-        @user.friendships.create(friend: @friend)
-        expect(@user.confirm_friend(@friend)).to eql(false)
+        @user.request_friendship(@friend)
+        @user.confirm_friend(@friend)
+        expect(@user.friend?(@friend)).to eql(false)
       end
     end
 
     context "Declining friend request" do
       it "declining a friend request" do
-        @user.friendships.create(friend: @friend)
-        expect(@friend.decline_friend(@user)).to eql(true)
+        @user.request_friendship(@friend)
+        @friend.decline_friend(@user)
+        expect(@friend.friend_requests.include?(@user)).to eql(false)
       end
 
       it "declining a friend request only one way" do
-        @user.friendships.create(friend: @friend)
-        expect(@user.decline_friend(@friend)).to eql(false)
+        @user.request_friendship(@friend)
+        @user.decline_friend(@friend)
+        expect(@friend.friend_requests.include?(@user)).to eql(true)
       end
     end
 
     context "Checking if request sent" do
       it "true when friend request sent" do
-        @user.friendships.create(friend: @friend)
+        @user.request_friendship(@friend)
         expect(@user.request_sent?(@friend)).to eql(true)
       end
 
@@ -72,15 +76,15 @@ RSpec.describe User, type: :model do
 
     context "Canceling friend request" do
       it "Deletes friend request" do
-        @user.friendships.create(friend: @friend)
+        @user.request_friendship(@friend)
         @user.cancel_friend_request(@friend)
-        expect(Friendship.count).to eql(0)
+        expect(@friend.friend_requests.include?(@user)).to eql(false)
       end
     end
 
     context "Showing all friends" do
       it "shows all the friends" do
-        @user.friendships.create(friend: @friend)
+        @user.request_friendship(@friend)
         @friend.confirm_friend(@user)
         expect(@friend.friends.first.email).to eql(@user.email)
       end
@@ -88,14 +92,32 @@ RSpec.describe User, type: :model do
 
     context "Checking if user is a friend" do
       it "when not accepted" do
-        @user.friendships.create(friend: @friend)
+        @user.request_friendship(@friend)
         expect(@user.friend?(@friend)).to eql(false)
       end
 
       it "when accepted" do
-        @user.friendships.create(friend: @friend)
+        @user.request_friendship(@friend)
         @friend.confirm_friend(@user)
         expect(@friend.friend?(@user)).to eql(true)
+      end
+    end
+
+    context "Delete friend" do
+      it "from sender" do
+        @user.request_friendship(@friend)
+        @friend.confirm_friend(@user)
+        @user.delete_friend(@friend)
+        expect(@friend.friend?(@user)).to eql(false)
+        expect(@user.friend?(@friend)).to eql(false)
+      end
+
+      it "from reciever" do
+        @user.request_friendship(@friend)
+        @friend.confirm_friend(@user)
+        @friend.delete_friend(@user)
+        expect(@friend.friend?(@user)).to eql(false)
+        expect(@user.friend?(@friend)).to eql(false)
       end
     end
 

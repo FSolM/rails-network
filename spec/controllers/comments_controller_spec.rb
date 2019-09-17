@@ -8,11 +8,6 @@ RSpec.describe CommentsController, type: :controller do
       sign_in(@user)
     end
 
-    it "creates a flash when creating a comment" do
-      post :create, params: { comment: { content: "Created in a laboratory", post_id: @post.id }, post_id: @post.id }
-      expect(flash[:notice]).to eql("You have successfully commented a post")
-    end
-
     it "redirects correctly after creating a comment" do
       post :create, params: { comment: { content: "Created in a laboratory", post_id: @post.id }, post_id: @post.id }
       expect(response).to redirect_to(post_path(@post))
@@ -41,7 +36,7 @@ RSpec.describe CommentsController, type: :controller do
 
     it "creates a flash when removing a post" do
       post :destroy, params: { id: @comment.id, post_id: @post.id }
-      expect(flash[:notice]).to eql('You have successfully deleted a comment')
+      expect(flash[:notice]).to eql('Your comment has been deleted')
     end
     
     it "redirects correctly after removing a post" do
@@ -70,12 +65,6 @@ RSpec.describe CommentsController, type: :controller do
       sign_in(@user)
     end
 
-    it "creates a flash when edited a comment" do
-      post :update, params: { comment: { content: 'Comment edited in a lab', post_id: @post.id }, 
-                              post_id: @post.id, id: @comment.id }
-      expect(flash[:notice]).to eql('You have successfully edited a comment')
-    end
-    
     it "redirects correctly after removing a comment" do
       post :update, params: { comment: { content: 'Comment edited in a lab', post_id: @post.id }, 
                               post_id: @post.id, id: @comment.id }

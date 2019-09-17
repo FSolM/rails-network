@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Post Controller; everything to do with posting
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :search_post, only: %i[destroy update edit show]
@@ -7,13 +10,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.authored_posts.build(post_params)
-    if post.save
-      flash[:notice] = "You have successfully created a new post"
+    if current_user.authored_posts.create(post_params)
       redirect_to feed_path
     else
-      flash.now[:alert] = "There has been an error when creating your post, please try again later"
-      render "new"
+      flash.now[:alert] = "You can't post right now, try again later"
+      render 'new'
     end
   end
 
@@ -24,15 +25,14 @@ class PostsController < ApplicationController
   def destroy
     if @post.author == current_user
       if @post.destroy
-        flash[:notice] = "Post deleted successfully"
+        flash[:notice] = 'Post deleted'
       else
-        flash[:alert] = "There has been an error deleting your post, please try again later"
+        flash[:alert] = 'Damn! Something went wrong'
       end
-      redirect_to feed_path
     else
-      flash[:alert] = "Please log in before trying delete a post"
-      redirect_to new_user_session_path
+      flash[:alert] = 'Are you sure this is your post?'
     end
+    redirect_to feed_path
   end
 
   def edit
@@ -42,19 +42,18 @@ class PostsController < ApplicationController
   def update
     if @post.author == current_user
       if @post.update(post_params)
-        flash[:notice] = "Post edited successfully"
-        redirect_to feed_path
+        flash[:notice] = 'Post updated'
       else
-        flash.now[:alert] = "There has been an error editing your post, please try again later"
-        render "edit"
+        flash[:alert] = "The post couldn't be updated"
       end
     else
-      flash[:alert] = "Please log in before trying to edit a post"
-      redirect_to new_user_session_path
+      flash[:alert] = 'Are you sure you can edit THIS post?'
     end
+    redirect_to post_path(@post)
   end
 
   private
+
   def post_params
     params.require(:post).permit(:content)
   end

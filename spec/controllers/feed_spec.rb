@@ -2,13 +2,6 @@ require 'rails_helper'
 
 RSpec.describe FeedController, type: :controller do
   describe "#index" do
-    it "assigns @user_friends" do
-      create(:user)
-      get :index
-      expect(assigns(:user_friends).length).to eql(User.last(4).length)
-      expect(assigns(:user_friends)[0].id).to eql(User.last(4)[0].id)
-    end
-
     it "assigns @recent_posts" do
       create(:post)
       get :index
