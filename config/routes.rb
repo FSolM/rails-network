@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create show destroy edit update] do
     resources :comments, only: %i[new create destroy edit update]
   end
-  resources :friendships, only: %i[show]
+  resources :friendships, only: [:index]
   resources :reactions, only: %i[create destroy update]
   resources :users, only: %i[show edit update]
 
