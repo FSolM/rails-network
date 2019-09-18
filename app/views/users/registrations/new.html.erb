@@ -11,7 +11,7 @@
           <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "What's your name?" %>
         </div>
         <div class="field">
-          <%= f.date_field :birth_day, autocomplete: "bday"%>
+          <%= f.date_field :birth_day %>
         </div>
         <div class="field">
           <%= f.email_field :email, autocomplete: "email", placeholder: "Email" %>
@@ -29,7 +29,9 @@
           <%= f.submit "Sign up", class: "btn" %>
         </div>
       <% end %>
-      <!-- <%= render "users/shared/links" %>  --->
+      <div class="col-12 registration-omniauth">
+        <%= link_to "Register with Facebook", user_facebook_omniauth_authorize_path %>
+      </div>
     </div>
   </div>
 </div>

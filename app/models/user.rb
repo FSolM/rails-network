@@ -3,7 +3,8 @@
 # User Record; relationships & validations
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: %i[facebook]
 
   validates :name, presence: true
   validates :email, presence: true,
@@ -17,6 +18,15 @@ class User < ApplicationRecord
                                class_name: :Comment, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :friendships, dependent: :destroy
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name
+      user.image_link = auth.info.image
+    end
+  end
 
   def friends
     friendships.where(accepted: true).map(&:friend).compact
