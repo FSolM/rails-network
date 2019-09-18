@@ -11,10 +11,9 @@ class User
       super
     end
 
-
     # POST /resource
     def create
-      @recent_posts = Post.last(2).reverse()
+      @recent_posts = Post.last(2).reverse
       super
     end
 
