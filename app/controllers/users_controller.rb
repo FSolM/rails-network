@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_birthday = get_birthday(@user)
-    puts @user_birthday
     @user_friends = @user.friends.first(4)
     @recent_posts = @user.authored_posts.first(5)
   end
