@@ -10,7 +10,8 @@
         <div class="field">
           <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "What's your name?" %>
         </div>
-        <div class="field">
+        <div class="field date-of-birth">
+          <%= f.label "What's your date of birth?", for: :birth_day%>
           <%= f.date_field :birth_day %>
         </div>
         <div class="field">
