@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < Devise::UnlocksController
-  class UnlocksController
+class User
+  class UnlocksController < Devise::UnlocksController
   end
 end
