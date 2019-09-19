@@ -4,6 +4,8 @@ This project is the final project of the Main Ruby on Rails curriculum at [Micro
 
 More info about the ERD [here](./docs/ERD.md)
 
+## [LIVE VERSION](https://ca-fs-application.herokuapp.com/)
+
 #### [Assignment link](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)  
 
 # How to setup the project
