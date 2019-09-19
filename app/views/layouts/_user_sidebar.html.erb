@@ -1,0 +1,39 @@
+<div class="container container-user">
+  <div class="row user-info">
+    <div class="col-12">
+      <div class="img-mock"></div>
+    </div>
+    <div class="col-12">
+      <h2><%= current_user.name %></h2>
+    </div>
+    <div class="container container-bio">
+      <% if current_user.bio.nil? || current_user.bio.empty? %>
+        <h4>You don't have a bio :[<br>Go ahead and add one <%= link_to "here", edit_user_path(current_user) %></h4>
+      <% else %>
+        <h4><%= current_user.bio %></h4>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <h5><%= current_user.birth_day || "Alright, keep your secrets :]" %></h5>
+    </div>
+  </div>
+  <div class="row user-friends">
+    <div class="container">
+      <div class="col-12">
+        <h3>Friends:</h3>
+      </div>
+      <% if current_user.friends.empty? %>
+        <div class="col-12">We're all lonely on the inside :], but go ahead and <br><%= link_to "meet new people", users_path %></div>
+      <% else %>
+        <div class="container-friend">
+          <% current_user.friends.each do |friend| %>
+            <div class="col-6">
+              <div class="mock-img"></div>
+              <%= link_to "#{friend.name}", user_path(friend) %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

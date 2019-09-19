@@ -1,0 +1,21 @@
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/**.rb'
+    - 'db/schema.rb'
+    - 'config/routes.rb'
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/routes.rb'
+    - 'app/controllers/user/omniauth_callbacks_controller.rb'
+
+Metrics/LineLength:
+  Max: 155
+
+Documentation:
+  Enabled: false
+
+Style:
+  Exclude:
+    - 'bin/**'

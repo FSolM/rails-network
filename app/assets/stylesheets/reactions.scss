@@ -1,0 +1,40 @@
+$light-grey: #aaaaaa;
+$medium-blue: #0052a3;
+$medium-grey: #616161;
+$pastel-blue: #90b9e2;
+
+// General Style
+
+// .like-btn needs to go first
+.like-btn {
+  background-color: $light-grey;
+  display: block;
+  padding: 0.5rem 1.5rem;
+  width: auto;
+  &:hover {
+    background-color: $medium-grey;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 500ms ease;
+    transition: color 500ms ease;
+  }
+}
+
+.active {
+  background-color: $medium-blue;
+  color: #ffffff;
+  &:hover {
+    background-color: $pastel-blue;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: background-color 500ms ease;
+    transition: color 500ms ease;
+  }
+}
+
+.like-form {
+  width: 20%;
+  .like-btn { margin: 0.5rem auto; }
+}
+
+// General Style

@@ -1,0 +1,17 @@
+<div class="container container-comment-new">
+  <%= form_for(:comment, url: post_comments_path(@post, @comment)) do |f| %>
+    <div class="row">
+      <div class="col-6">
+        <div class="field">
+          <%= f.text_field :content %>
+        </div>
+      </div>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <div class="col-2">
+        <div class="actions">
+          <%= f.submit "Post", class: "btn new-comment-submit" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

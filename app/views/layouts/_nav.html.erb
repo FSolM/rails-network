@@ -1,0 +1,15 @@
+<nav class="nav-right">
+  <ul>
+    <% if signed_in? %>
+      <li><%= link_to "Home", feed_path %></li>
+      <li><%= link_to "Profile", user_path(current_user) %></li>
+      <li><%= link_to "Meet people", users_path %></li>
+      <li><%= link_to "Friends", friendships_path %></li>
+      <li><%= link_to "Settings", "#" %></li>
+      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Register", new_user_registration_path %></li>
+      <li><%= link_to "Sign in", new_user_session_path %></li>
+    <% end %>
+  </ul>
+</nav>

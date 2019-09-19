@@ -1,0 +1,21 @@
+<div class="container container-friendship-pending">
+  <div class="row">
+    <div class="col-12 friendships-menu">Pending Request</div>
+    <% unless @pending_friends.empty? %>
+      <div class="container friend-requests">
+        <% @pending_friends.each do |request| %>
+          <div class="row">
+            <div class="col-8 request-name">
+              <%= link_to request.name, user_path(request) %>
+            </div>
+            <div class="col-4 request-decline delete">
+              <%= link_to "Cancel", cancel_friend_request_url(user_id: request.id) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-12 friendships-error-message">You don't have any pending requests</div>
+    <% end %>
+  </div>
+</div>

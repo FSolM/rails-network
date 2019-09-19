@@ -1,0 +1,45 @@
+<!-- Check this whole page, needs a little bit of code rework -->
+<div class="container container-post-feed">
+  <% if @posts.empty? %>
+    <div class="col-12 container-feed-alert">
+      <h3>The feed's... empty?<br>How so?</h3>
+    </div>
+  <% else %>
+      <% @posts.each do |post| %>
+        <div class="container post">
+          <div class="container container-post">
+            <div class="user-info">
+              <div class="user-img-mock"></div>
+              <%= link_to "#{post.author.name}" , user_path(post.author)  %>
+              <% if post.author == current_user %>
+                <ul class="post-modif">
+                  <li><%= link_to "edit", edit_post_path(post) %></li>
+                  <li><%= link_to "delete", post_path(post) , method: :delete, action: :destroy %></li>
+                </ul>
+              <% end %>
+            </div>
+            <div class="post-content">
+              <h5><%= link_to post.content, post_path(post) %><h5>
+            </div>
+          </div>
+          <div>
+            <%= form_with url: react_path, class: 'like-form' do |f| %>
+                <%= f.hidden_field :post_id, value: post.id %>
+                <%= f.submit "#{post.reactions.count} #{post.reactions.count != 1 ? "Likes" : "Like"}",
+                    class: "#{reacted?(post) ? "like-btn active" : "like-btn"}",
+                    onclick: "$(this).toggleClass('active');
+                              text = parseInt($(this).val().split(' ')[0]);
+                              $(this).hasClass('active') ? text++ : text--;
+                              text != 1 ? $(this).val(`${text} Likes`) : $(this).val(`${text} Like`);" %>
+            <% end %>
+          </div>
+          <div class="post-info">
+            <% if post.created_at != post.updated_at %>
+              <h5>Updated at: <%= post.updated_at.strftime("%d/%m/%Y") %></h5>
+            <% end %>
+            <h5>Created at: <%= post.created_at.strftime("%d/%m/%Y") %></h5>
+          </div>
+        </div>
+      <% end %>
+  <% end %>
+</div>

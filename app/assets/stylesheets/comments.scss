@@ -1,0 +1,60 @@
+$dark-blue: #003366;
+$light-blue: #006edb;
+$medium-blue: #0052a3;
+$medium-grey: #616161;
+$thin-grey: #ececec;
+
+// Comment Container
+
+.btn.new-comment-submit {
+  background-color: $medium-blue;
+  color: #ffffff;
+  &:hover {
+    background-color: $light-blue;
+    cursor: pointer;
+  }
+}
+
+.container.container-comment-edit,
+.container.container-comment-new {
+  border: 0.1rem solid $medium-grey;
+  border-top: none;
+  .row {
+    align-items: center;
+    justify-content: space-between;
+    input[type="text"] {
+      border-radius: 1.25rem;
+      padding: 2rem 1rem;
+    }
+  }
+}
+
+.container.container-comment-edit { border-top: 0.1rem solid $medium-grey; }
+
+.container.container-comments {
+  padding: 0 2.5rem;
+  > * { background-color: $thin-grey; }
+  .container.container-comment {
+    border: 0.1rem solid $medium-grey;
+    border-top: none;
+    padding: 2rem 1rem; 
+    > .row .container { text-align: center; }
+    .comment-author {
+      font-size: 2.4rem;
+      font-style: italic;
+      font-weight: 600;
+    }
+    .comment-content {
+      color: $medium-grey;
+      font-size: 2.2rem;
+    }
+  }
+  .title-comments {
+    border: 0.1rem solid $medium-grey;
+    color: $dark-blue;
+    font-size: 3.5rem;
+    padding: 1rem 2.5rem;
+  }
+}
+
+// Comment Container

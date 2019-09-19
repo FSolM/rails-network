@@ -1,0 +1,60 @@
+<div class="container container-feed">
+  <div class="row">
+    <div class="col-md-4 feed-user-cont">
+      <%= render "layouts/user_sidebar" %>
+    </div>
+    <div class="col-md-8 feed-posts-cont">
+      <div class="container container-show-post">
+        <div class="col-12 post-metadata">
+          <span class="post-creator-img"></span>
+          <span class="post-creator"><%= link_to @post.author.name %></span>
+          <% if current_user == @post.author %>
+            <span class="post-control">
+              <%= link_to "edit", edit_post_path(@post) %>
+              <%= link_to "delete", post_path(@post) , method: :delete, action: :destroy %>
+            </span>
+          <% end %>
+        </div>
+        <div class="col-12 post-title"><%= @post.content %></div>
+        <div class="col-12 col-post-like">
+          <!-- Twick colour change time -->
+          <!-- Maybe add a thumbs up img in the btn or at least an up arrow -->
+          <!-- Add counter inside button -->
+          <%= form_with url: react_path do |f| %>
+              <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit "#{@post.reactions.count} #{@post.reactions.count != 1 ? "Likes" : "Like"}",
+                  class: "#{reacted?(@post) ? "like-btn active" : "like-btn"}",
+                  onclick: "$(this).toggleClass('active');
+                            text = parseInt($(this).val().split(' ')[0]);
+                            $(this).hasClass('active') ? text++ : text--;
+                            text != 1 ? $(this).val(`${text} Likes`) : $(this).val(`${text} Like`);" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="container container-comments">
+        <div class="col-12 title-comments">Comments</div>
+        <%= render "comments/new" if current_user %>
+        <% if @comments %>
+          <% for comment in @comments %>
+            <div class="container container-comment">
+              <div class="row">
+                <div class="col-3">
+                  <div class="container">
+                    <div class="col-12 comment-img"></div>
+                    <div class="col-12 comment-author"><%= comment.author.name %></div>
+                    <% if current_user == comment.author %>
+                      <div class="col-12">
+                        <%= link_to "edit", edit_post_comment_path(@post, comment) %>  |  <%= link_to "delete", post_comment_path(@post, comment) , method: :delete, action: :destroy %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-9 comment-content"><%= comment.content %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
