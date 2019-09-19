@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :friendships, only: [:index]
   resources :reactions, only: %i[create destroy update]
-  resources :users, only: %i[show edit update]
+  resources :users, only: %i[show edit update index]
 
   get 'add_friend', to: 'friendships#add_friend'
   get 'cancel_friend_request', to: 'friendships#cancel_friend_request'
