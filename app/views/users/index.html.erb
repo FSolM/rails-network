@@ -1,0 +1,21 @@
+<div class="container container-unknown-users">
+  <div class="row row-unknown-users">
+    <div class="col-12 friendships-menu">Great people you should meet</div>
+    <% unless @unkown_users.empty? %>
+      <div class="container unknown-users">
+        <% @unkown_users.each do |user| %>
+          <div class="row">
+            <div class="col-8 add-user-name">
+              <%= link_to user.name, user_path(user) %>
+            </div>
+            <div class="col-4 friendship-form">
+              <%= link_to "Send friend request", add_friend_url(user_id: user), class: "send-friend" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-12 friendships-error-message">You don't have any requests</div>
+    <% end %>
+  </div>
+</div>

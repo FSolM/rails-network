@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Reaction, type: :model do
   before(:each) do
     @author = create(:user)
     @post = create(:post)
-    @reaction = @author.reactions.create( post: @post)
+    @reaction = @author.reactions.create(post: @post)
   end
 
-  context 'Unit test' do 
+  context 'Unit test' do
     it 'creates a valid reaction' do
       expect(@reaction).to be_valid
     end
@@ -24,13 +26,13 @@ RSpec.describe Reaction, type: :model do
   end
 
   context 'Integration test' do
-    it "reaction can grab author" do
+    it 'reaction can grab author' do
       user = create(:user, email: 'author_grabbed@example.com')
-      reaction = user.reactions.create( post: @post)
+      reaction = user.reactions.create(post: @post)
       expect(reaction.user.email).to eql('author_grabbed@example.com')
     end
 
-    it "reaction can grab post" do
+    it 'reaction can grab post' do
       expect(@reaction.post.content).to eql('Same boring content :(')
     end
   end

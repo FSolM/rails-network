@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
                                        friend_request remove_friend
                                        accept_friend_request]
 
-  def show
+  def index
     @friends = current_user.friends
     @pending_friends = current_user.pending_friends
     @friend_requests = current_user.friend_requests

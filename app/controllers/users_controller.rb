@@ -2,12 +2,20 @@
 
 # User Controller; user flow control
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: :index
+
   def show
     @user = User.find(params[:id])
     @user_birthday = get_birthday(@user)
-    puts @user_birthday
     @user_friends = @user.friends.first(4)
     @recent_posts = @user.authored_posts.first(5)
+  end
+
+  def index
+    @unkown_users = []
+    User.all.each do |friend| 
+      @unkown_users << friend if unknown?(friend)
+    end
   end
 
   def edit
@@ -25,6 +33,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def unknown?(user)
+    user == current_user ? false : Friendship.where(user: current_user, friend: user).empty?
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :birth_day, :bio)

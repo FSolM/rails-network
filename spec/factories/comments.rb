@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'factory_bot'
 
 FactoryBot.define do
-  rand_string = (0..50).map { (65 + rand(26)).chr }.join
+  rand_string = (0..50).map { rand(65..90).chr }.join
   email = "comment_random_#{rand_string.downcase}@email.com"
 
   factory :comment do

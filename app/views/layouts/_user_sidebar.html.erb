@@ -22,8 +22,8 @@
       <div class="col-12">
         <h3>Friends:</h3>
       </div>
-      <% unless current_user.friends %>
-        <div class="col-12">We're all lonely on the inside :]</div>
+      <% if current_user.friends.empty? %>
+        <div class="col-12">We're all lonely on the inside :], but go ahead and <br><%= link_to "meet new people", users_path %></div>
       <% else %>
         <div class="container-friend">
           <% current_user.friends.each do |friend| %>
