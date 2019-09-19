@@ -9,7 +9,7 @@
               <%= link_to user.name, user_path(user) %>
             </div>
             <div class="col-4 friendship-form">
-              <%= link_to "Send friend request", add_friend_url(user_id: @user), class: "send-friend" %>
+              <%= link_to "Send friend request", add_friend_url(user_id: user), class: "send-friend" %>
             </div>
           </div>
         <% end %>
