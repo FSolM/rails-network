@@ -1,11 +1,11 @@
 <!-- Check this whole page, needs a little bit of code rework -->
 <div class="container container-post-feed">
-  <% if @recent_posts.empty? %>
+  <% if @posts.empty? %>
     <div class="col-12 container-feed-alert">
       <h3>The feed's... empty?<br>How so?</h3>
     </div>
   <% else %>
-      <% @recent_posts.each do |post| %>
+      <% @posts.each do |post| %>
         <div class="container post">
           <div class="container container-post">
             <div class="user-info">
