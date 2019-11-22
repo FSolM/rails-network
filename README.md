@@ -1,23 +1,28 @@
-# Project: Facebook clone
+# Rail's Network
+### A social media project using Rails
+#### Project 8
 
-This project is the final project of the Main Ruby on Rails curriculum at [Microverse](https://www.microverse.org/)
+**Live version:** https://ca-fs-application.herokuapp.com
 
-More info about the ERD [here](./docs/ERD.md)
+You can check the ERD model over [**here**](./docs/ERD.md)
 
-## [LIVE VERSION](https://ca-fs-application.herokuapp.com/)
+## Usage & Installation
 
-#### [Assignment link](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)  
+Install the necessary gems:
 
-# How to setup the project
-First install all the required gems
+```
+$ bundle install --without production
+```
 
-`$ bundler install`
+*The gems included in the project are no necessary up to date, be sure to update them before running the project to project it from vulnerabilities.*
 
-## To config the Database (for development and tests):
+**Configure the database for both development & testing:**
 
-#### Using bash:
+***Using bash:***
+
 1. Setup a file `.bashrc` in the root path
 2. Inside the file put all the config variables that match your local postgresql role and database
+
 ```bash 
 # Dev Exports
 
@@ -35,9 +40,12 @@ export TEST_PASSWORD="database_password"
 export TEST_HOST="database_host"
 export TEST_PORT=5432
 ```
-#### Without using bash
-1. Go to the file `config/database.yml` and manually config the enviorment variables acording to your preference
-#### Authors
 
-* [@FSolM](https://github.com/https://github.com/FSolM)
-* [@codingAngarita](https://github.com/codingAngarita)
+***Without using bash***
+
+1. Go to the file `config/database.yml` and manually config the enviorment variables acording to your preference
+
+#### Created by:
+
+Carlos Sol: [@FSolM](https://github.com/FSolM)<br>
+Juan Escobar: [@codingAngarita](https://github.com/codingAngarita)
