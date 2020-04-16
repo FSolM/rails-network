@@ -71,6 +71,16 @@ export TEST_PORT=5432
 
 1. Go to the file `config/database.yml` and manually config the enviorment variables acording to your preference
 
+## Screenshots
+
+![Screenshot 1](/screenshots/RailsNetwork1.png)
+
+![Screenshot 2](/screenshots/RailsNetwork2.png)
+
+![Screenshot 3](/screenshots/RailsNetwork3.png)
+
+![Screenshot 4](/screenshots/RailsNetwork4.png)
+
 ## Known Issues
 
 There are some issues with how the page behaves in some devices; also the mobile version of the page has some display issues in some of the views.
